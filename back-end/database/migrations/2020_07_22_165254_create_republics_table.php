@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Users;
+use App\Republics;
+
 class CreateRepublicsTable extends Migration
 {
     /**
