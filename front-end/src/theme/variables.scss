@@ -226,3 +226,31 @@
     --ion-tab-bar-background: #1f1f1f;
   }
 }
+
+@font-face {
+  font-family: 'Roboto Condensed Light';
+  src: url('../assets/fonts/Roboto_Condensed/RobotoCondensed-Light.ttf');
+  font-weight: 300;
+  font-style: light;
+}
+
+@font-face {
+   font-family: 'Roboto Condensed Regular';
+   src: url('../assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf');
+   font-weight: 400;
+   font-style: regular;
+ }
+
+ @font-face {
+   font-family: 'Roboto Condensed Bold';
+   src: url('../assets/fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf');
+   font-weight: 700;
+   font-style: bold;
+ }
+
+ @font-face {
+    font-family: 'Lobster Two Regular';
+    src: url('../assets/fonts/Lobster_Two/LobsterTwo-Regular.ttf');
+    font-weight: 400;
+    font-style: regular;
+  }
