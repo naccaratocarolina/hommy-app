@@ -32,3 +32,10 @@ Route::post('userAnnounceRepublic/{id}/{user_id}','RepublicController@userAnnoun
 Route::put('updateRepublic/{id}','RepublicController@updateRepublic');
 Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic');
 Route::delete('userDeleteRepublic/{id}/{user_id}','RepublicController@userDeleteRepublic');
+
+//CommentController
+Route::post('userMakeComment/{user_id}','CommentController@userMakeComment');
+Route::get('listComments','CommentController@listComments');
+//Route::get('findCommentByUser/{user_id}','RepublicController@listRepublic');
+Route::put('updateComment/{id}/{user_id}','CommentController@updateComment');
+Route::delete('userDeleteComment/{id}/{user_id}','CommentController@userDeleteComment');
