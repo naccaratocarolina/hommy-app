@@ -20,9 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //UserController
 Route::post('createUser','UserController@createUser');
-Route::get('findUser/{id}','RepublicController@findUser');
+Route::get('findUser/{id}','UserController@findUser');
 Route::get('listUser','UserController@listUser');
-Route::delete('deleteUser/{id}','RepublicController@deleteUser');
+Route::delete('deleteUser/{id}','UserController@deleteUser');
 
 
 //RepublicController
