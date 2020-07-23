@@ -18,15 +18,15 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('street');
-            $table->string('number');
-            $table->string('state');
-            $table->string('city');
-            $table->string('phone'); //atributo multivalorado
-            $table->string('date_birth');
-            $table->string('cpf');
-            $table->float('payment');
-            $table->boolean('can_post');
+            $table->string('street')->nullable();
+            $table->string('number')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->string('phone')->nullable(); //atributo multivalorado
+            $table->string('date_birth')->nullable();
+            $table->string('cpf')->nullable();
+            $table->float('payment')->nullable();
+            $table->boolean('can_post')->nullable();
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

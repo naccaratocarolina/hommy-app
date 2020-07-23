@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-//importing a Model Republic
+use App\User;
 use App\Republic;
 
 class RepublicController extends Controller {
@@ -35,14 +35,13 @@ class RepublicController extends Controller {
     $republic->save();
 
     //returning json
-    return response()->json([$republic], 'Republica criada com sucesso!');
+    return response()->json([$republic, 'Republica criada com sucesso!']);
   }
 
   //find a republic by id
   public function findRepublic($id) {
     $republic = Republic::findOrFail($id);
-
-    return response()->json([$republic]);
+    return response()->json([$republic, 'Republica encontrada com sucesso!']);
   }
 
   //list all republics on the database
@@ -107,7 +106,7 @@ class RepublicController extends Controller {
         $republic->description = $request->description;
       }
         $republic->save();
-        return response()->json([$republic], 'Reserva atualizada com sucesso!');
+        return response()->json([$republic, 'Reserva atualizada com sucesso!']);
       }
       else {
         return response()->json(['Esta reserva nao existe']);
@@ -121,7 +120,7 @@ class RepublicController extends Controller {
     return response()->json(['Reserva deletada com sucesso!']);
   }
 
-  //user creates/announce a new republic
+  //user creates/announce a new republic (create relationship between user & republic)
   public function userAnnounceRepublic($id, $user_id) {
     $republic = Republic::findOrFail($id);
     $user = User::findOrFail($user_id);
@@ -129,10 +128,10 @@ class RepublicController extends Controller {
     $republic->user_id = $user_id;
     $republic->save();
 
-    return response()->json([$republic], 'Republica criada com sucesso!');
+    return response()->json([$republic, 'Relacao criada com sucesso!']);
   }
 
-  //user deletes an existing republic
+  //user deletes an existing republic (destroy relationship between user & republic)
   public function userDeleteRepublic($id, $user_id) {
     $republic = Republic::findOrFail($id);
     $user = User::findOrFail($user_id);
@@ -140,6 +139,6 @@ class RepublicController extends Controller {
     $republic->user_id = NULL;
     $republic->save();
 
-    return response()->json([$republic], 'Republica deletada com sucesso!');
+    return response()->json([$republic, 'Relacao deletada com sucesso!']);
   }
 }

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
 use App\Republic;
 
 class UserController extends Controller {
+  //creates a new user
   public function createUser(Request $request) {
     //creating a User object called user
     $user = new User;
@@ -29,29 +31,26 @@ class UserController extends Controller {
     $user->save();
 
     //returning json
-    return response()->json([$user], 'User criado com sucesso!');
+    return response()->json([$user, 'User criado com sucesso!']);
   }
 
   //find an especific user by id
   public function findUser(Request $request, $id){
     $user = User::findOrFail($id);
-    return response()->json([$user]);
+    return response()->json($user);
   }
 
   //list all users
   public function listUser(Request $request){
-    $paginator = User::paginate(10);
-    $user = UserResource::collection($paginator);
-    $last = $paginator -> lastPage();
+    $user = User::all();
 
-    return response()->json([$user,$last]);
+    return response()->json([$user]);
   }
 
   //deletes an user
   public function deleteUser(Request $request, $id){
-    $user = User::findOrFail($id);
-    Storage::delete($user->profile_picture);
     User::destroy($id);
-    return response()->json(['User deletado com sucesso!']);
+
+    return response()->json(['User deletada com sucesso!']);
   }
 }
