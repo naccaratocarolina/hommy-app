@@ -25,16 +25,16 @@ class CreateRepublicsTable extends Migration
             $table->string('imagem_3')->nullable();
             $table->string('category');
             $table->float('rental_per_month');
-            $table->integer('footage');
-            $table->integer('number_bath');
-            $table->integer('number_bed');
-            $table->boolean('parking');
-            $table->boolean('animals');
+            $table->float('footage');
+            $table->integer('number_bath')->nullable();
+            $table->integer('number_bed')->nullable();
+            $table->boolean('parking')->nullable();
+            $table->boolean('animals')->nullable();
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
-        
+
         Schema::table('republics', function (Blueprint $table) {
           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
 use App\Republic;
 
-class UserController extends Controller {
-  
+class CommentController extends Controller {
+    
 }

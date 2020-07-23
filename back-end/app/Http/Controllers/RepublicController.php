@@ -8,13 +8,6 @@ use Illuminate\Http\Request;
 use App\Republic;
 
 class RepublicController extends Controller {
-  //display
-  public function indexRepublic() {
-    $republic['republics'] = Republic::orderBy('id', 'desc')->paginate(10);
-
-    return response()->json([$republic]);
-  }
-
   //create a new republic
   public function createRepublic(Request $request) {
     //creating a Republic object called republic
@@ -63,7 +56,7 @@ class RepublicController extends Controller {
   public function updateRepublic(Request $request, $id) {
     $republic = Republic::find($id);
 
-    //valitating request
+    //validating request
     if($republic){
       if($request->name){
         $republic->name = $request->name;
@@ -121,6 +114,7 @@ class RepublicController extends Controller {
       }
   }
 
+  //destroy/delete an existing republic
   public function deleteRepublic($id) {
     Republic::destroy($id);
 
