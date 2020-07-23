@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { FolderPageRoutingModule } from './folder-routing.module';
 
 import { FolderPage } from './folder.page';
+import { RepublicComponent } from '../Components/republic/republic.component'
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FolderPageRoutingModule
+    FolderPageRoutingModule,
   ],
-  declarations: [FolderPage]
+  entryComponents: [RepublicComponent],
+  declarations: [FolderPage, RepublicComponent]
 })
 export class FolderPageModule {}
