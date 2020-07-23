@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
-use App\Comment;
+
+use App\Users;
+use App\Comments;
 
 class Republic extends Model {
   public function users() {

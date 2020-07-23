@@ -5,8 +5,9 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Republic;
-use App\Comment;
+
+use App\Republics;
+use App\Comments;
 
 class User extends Authenticatable {
     use Notifiable;

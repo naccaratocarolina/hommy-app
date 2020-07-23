@@ -4,9 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-use App\Users;
-use App\Republics;
-
 class CreateRepublicsTable extends Migration
 {
     /**
@@ -18,7 +15,7 @@ class CreateRepublicsTable extends Migration
     {
         Schema::create('republics', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')
+            $table->string('name');
             $table->string('street');
             $table->integer('number');
             $table->string('state');
@@ -34,7 +31,12 @@ class CreateRepublicsTable extends Migration
             $table->boolean('parking');
             $table->boolean('animals');
             $table->longText('description')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
+        });
+        
+        Schema::table('republics', function (Blueprint $table) {
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
