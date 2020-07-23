@@ -120,4 +120,26 @@ class RepublicController extends Controller {
 
     return response()->json(['Reserva deletada com sucesso!']);
   }
+
+  //user creates/announce a new republic
+  public function userAnnounceRepublic($id, $user_id) {
+    $republic = Republic::findOrFail($id);
+    $user = User::findOrFail($user_id);
+
+    $republic->user_id = $user_id;
+    $republic->save();
+
+    return response()->json([$republic], 'Republica criada com sucesso!');
+  }
+
+  //user deletes an existing republic
+  public function userDeleteRepublic($id, $user_id) {
+    $republic = Republic::findOrFail($id);
+    $user = User::findOrFail($user_id);
+
+    $republic->user_id = NULL;
+    $republic->save();
+
+    return response()->json([$republic], 'Republica deletada com sucesso!');
+  }
 }
