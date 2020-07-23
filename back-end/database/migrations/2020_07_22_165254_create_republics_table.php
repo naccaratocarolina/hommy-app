@@ -18,13 +18,14 @@ class CreateRepublicsTable extends Migration
     {
         Schema::create('republics', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name')
             $table->string('street');
-            $table->string('number');
+            $table->integer('number');
             $table->string('state');
             $table->string('city');
-            $table->string('imagem_1');
-            $table->string('imagem_2');
-            $table->string('imagem_3');
+            $table->string('imagem_1')->nullable();
+            $table->string('imagem_2')->nullable();
+            $table->string('imagem_3')->nullable();
             $table->string('category');
             $table->float('rental_per_month');
             $table->integer('footage');
@@ -32,7 +33,7 @@ class CreateRepublicsTable extends Migration
             $table->integer('number_bed');
             $table->boolean('parking');
             $table->boolean('animals');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }
