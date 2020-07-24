@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-republic',
-  templateUrl: './republic.component.html',
-  styleUrls: ['./republic.component.scss'],
+  selector: 'app-republic-scroll-bar',
+  templateUrl: './republic-scroll-bar.component.html',
+  styleUrls: ['./republic-scroll-bar.component.scss'],
 })
-export class RepublicComponent implements OnInit {
-  public arrayApartamentos = [
+export class RepublicScrollBarComponent implements OnInit {
+  public arrayRepublicas = [
     {
       name: 'Republica 1',
       image_1: 'rep_1_1.png',
@@ -57,6 +57,24 @@ export class RepublicComponent implements OnInit {
       number_bed: 1,
       parking: 'Sim',
       animals: 'Sim'
+    }
+    ,
+    {
+      name: 'Republica 4',
+      image_1: 'rep_3_1.png',
+      image_2: 'rep_3_2.png',
+      image_3: 'rep_3_3.png',
+      street: 'Rua 4',
+      number: 4,
+      neighborhood: 'Bairro 4',
+      city: 'Rio de Janeiro',
+      category: 'Apartamento',
+      rental_per_month: 3432,
+      footage:300,
+      number_bath: 1,
+      number_bed: 1,
+      parking: 'Não',
+      animals: 'Não'
     }
   ];
 

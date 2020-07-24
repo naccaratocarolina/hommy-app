@@ -14,7 +14,37 @@
     </ion-toolbar>
   </ion-header>
   
-  <div>
-    <app-republic></app-republic>
+  <div class="buttons">
+    <ion-title>Categorias</ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col><ion-button>RECOMENDADOS</ion-button></ion-col>
+        <ion-col><ion-button>CASAS</ion-button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><ion-button>APARTAMENTOS</ion-button></ion-col>
+        <ion-col><ion-button>QUARTOS</ion-button></ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
+  
+  <div class="categories">
+    <div>
+      <ion-title>Recomendados</ion-title>
+      <app-republic-scroll-bar></app-republic-scroll-bar>
+    </div>
+    <div>
+      <ion-title>Casas</ion-title>
+      <app-republic-scroll-bar></app-republic-scroll-bar>
+    </div>
+    <div>
+      <ion-title>Apartamentos</ion-title>
+      <app-republic-scroll-bar></app-republic-scroll-bar>
+    </div>
+    <div>
+      <ion-title>Quartos</ion-title>
+      <app-republic-scroll-bar></app-republic-scroll-bar>
+    </div>
+  </div>
+
 </ion-content>

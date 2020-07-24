@@ -1,3 +1,7 @@
+* {
+  font-family: Roboto Condensed Regular;
+}
+
 ion-menu-button {
   color: var(--ion-color-primary);
 }
@@ -25,4 +29,34 @@ ion-menu-button {
 
 #container a {
   text-decoration: none;
+}
+
+.buttons, .categories {
+  margin-left: 1vh;
+}
+
+.buttons {
+  margin-right: 1vh;
+}
+
+.buttons ion-row {
+  height: 10vh;
+}
+
+.buttons ion-button {
+  height: 100%;
+  width: 100%;
+  color: var(--ion-color-secondary);
+  --background: transparent;
+  border: 0.5px solid var(--ion-color-secondary);
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+ion-title {
+  margin-top: 2vh;
+  margin-bottom: 1vh;
+  font-size: 1.6em;
 }

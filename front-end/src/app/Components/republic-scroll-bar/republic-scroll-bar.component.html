@@ -1,0 +1,37 @@
+<div class="scroll-div">
+  <div class="card" *ngFor="let Republica of arrayRepublicas">
+    <ion-card>
+      <ion-label class="bold">{{ Republica.name }}</ion-label>
+      <ion-slides class="slides" pager="true">
+        <ion-slide><img src="../../assets/republics/{{Republica.image_1}}" alt="imagem de uma república"></ion-slide>
+        <ion-slide><img src="../../assets/republics/{{Republica.image_2}}" alt="imagem de uma república"></ion-slide>
+        <ion-slide><img src="../../assets/republics/{{Republica.image_3}}" alt="imagem de uma república"></ion-slide>
+      </ion-slides>
+      
+      <ion-grid>
+        <ion-row>{{ Republica.category }}</ion-row>
+        <ion-row>{{ Republica.street }}</ion-row>
+        <ion-row>{{ Republica.neighborhood }}, {{ Republica.city }}</ion-row>
+        <ion-row>
+          <ion-col><ion-icon name="calculator"></ion-icon> {{ Republica.footage }} m²</ion-col>
+          <ion-col><ion-icon name="bed"></ion-icon> {{ Republica.number_bed }} quartos</ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col><i class="fa fa-bath" aria-hidden="true"></i> {{ Republica.number_bed }} banheiros</ion-col>
+          <ion-col><ion-icon name="paw"></ion-icon> {{ Republica.animals }}</ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col><ion-icon name="car"></ion-icon> {{ Republica.parking }}</ion-col>
+          <ion-col><ion-icon name="cash-outline"></ion-icon> R$ {{ Republica.rental_per_month }}</ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col><ion-button type="rent"><ion-icon name="document-text-outline"></ion-icon></ion-button></ion-col>
+          <ion-col><ion-button type="rate"><ion-icon name="star-outline"></ion-icon></ion-button></ion-col>
+        </ion-row>
+      </ion-grid>  
+    </ion-card>
+  </div>
+</div>

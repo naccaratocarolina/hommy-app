@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { RepublicComponent } from './republic.component';
+import { RepublicScrollBarComponent } from './republic-scroll-bar.component';
 
-describe('RepublicComponent', () => {
-  let component: RepublicComponent;
-  let fixture: ComponentFixture<RepublicComponent>;
+describe('RepublicScrollBarComponent', () => {
+  let component: RepublicScrollBarComponent;
+  let fixture: ComponentFixture<RepublicScrollBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RepublicComponent ],
+      declarations: [ RepublicScrollBarComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RepublicComponent);
+    fixture = TestBed.createComponent(RepublicScrollBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
