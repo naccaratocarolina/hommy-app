@@ -1,28 +1,28 @@
-<ion-card class="container">
-  <ion-label class="bold">{ Republic.title }</ion-label>
+<ion-card class="container" *ngFor="let Republica of arrayApartamentos">
+  <ion-label class="bold">{{ Republica.name }}</ion-label>
   <ion-slides class="slides" pager="true">
-    <ion-slide><img src="../../assets/republics/rep_1.png"></ion-slide>
-    <ion-slide><img src="../../assets/republics/rep_2.png"></ion-slide>
-    <ion-slide><img src="../../assets/republics/rep_3.png"></ion-slide>
+    <ion-slide><img src="../../assets/republics/{{Republica.image_1}}"></ion-slide>
+    <ion-slide><img src="../../assets/republics/{{Republica.image_2}}"></ion-slide>
+    <ion-slide><img src="../../assets/republics/{{Republica.image_3}}"></ion-slide>
   </ion-slides>
   
   <ion-grid>
-    <ion-row>{ Republic.category }</ion-row>
-    <ion-row>{ Republic.street }, { Republic.number }</ion-row>
-    <ion-row>{ Republic.neighborhood }, { Republic.city }</ion-row>
+    <ion-row>{{ Republica.category }}</ion-row>
+    <ion-row>{{ Republica.street }}</ion-row>
+    <ion-row>{{ Republica.neighborhood }}, {{ Republica.city }}</ion-row>
     <ion-row class="description">
-      <ion-col><ion-icon name="calculator"></ion-icon> XXm²</ion-col>
-      <ion-col><ion-icon name="bed"></ion-icon> X quartos</ion-col>
+      <ion-col><ion-icon name="calculator"></ion-icon> {{ Republica.footage }} m²</ion-col>
+      <ion-col><ion-icon name="bed"></ion-icon> {{ Republica.number_bed }} quartos</ion-col>
     </ion-row>
     
     <ion-row class="description">
-      <ion-col><i class="fa fa-bath" aria-hidden="true"></i> X banheiros</ion-col>
-      <ion-col><ion-icon name="paw"></ion-icon> Não</ion-col>
+      <ion-col><i class="fa fa-bath" aria-hidden="true"></i> {{ Republica.number_bed }} banheiros</ion-col>
+      <ion-col><ion-icon name="paw"></ion-icon> {{ Republica.animals }}</ion-col>
     </ion-row>
     
     <ion-row class="description">
-      <ion-col><ion-icon name="car"></ion-icon> Sim</ion-col>
-      <ion-col><ion-icon name="cash-outline"></ion-icon> R$ XXX,XX</ion-col>
+      <ion-col><ion-icon name="car"></ion-icon> {{ Republica.parking }}</ion-col>
+      <ion-col><ion-icon name="cash-outline"></ion-icon> R$ {{ Republica.rental_per_month }}</ion-col>
     </ion-row>
     
     <ion-row class="rent_button">
