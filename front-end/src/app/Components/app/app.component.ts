@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
       icon: 'person'
     },
     {
-      title: 'Favoritos',
+      title: 'Favoritas',
       url: '/favoritas',
       icon: 'heart'
     },
