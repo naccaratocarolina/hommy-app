@@ -61,9 +61,9 @@ export class RepublicScrollBarComponent implements OnInit {
     ,
     {
       name: 'Republica 4',
-      image_1: 'rep_3_1.png',
-      image_2: 'rep_3_2.png',
-      image_3: 'rep_3_3.png',
+      image_1: 'rep_4_1.png',
+      image_2: 'rep_4_2.png',
+      image_3: 'rep_4_3.png',
       street: 'Rua 4',
       number: 4,
       neighborhood: 'Bairro 4',
