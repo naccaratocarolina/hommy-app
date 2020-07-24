@@ -26,11 +26,11 @@ class User extends Authenticatable {
 
     //an user can create n republics
     public function republics() {
-        return $this->hasMany(App\Republic);
+        return $this->hasMany('App\Republic');
     }
 
     //an user can create n comments
     public function comments() {
-        return $this->hasMany(App\Comment);
+        return $this->hasMany('App\Comment');
     }
 }

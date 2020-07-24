@@ -35,7 +35,7 @@ Route::delete('userDeleteRepublic/{id}/{user_id}','RepublicController@userDelete
 
 //CommentController
 Route::post('userMakeComment/{user_id}','CommentController@userMakeComment');
-Route::get('listComments','CommentController@listComments');
-//Route::get('findCommentByUser/{user_id}','RepublicController@listRepublic');
-Route::put('updateComment/{id}/{user_id}','CommentController@updateComment');
+Route::get('listAllComments','CommentController@listAllComments');
+Route::get('findCommentByUser/{user_id}','CommentController@findCommentByUser');
+Route::put('userUpdateComment/{id}/{user_id}','CommentController@userUpdateComment');
 Route::delete('userDeleteComment/{id}/{user_id}','CommentController@userDeleteComment');

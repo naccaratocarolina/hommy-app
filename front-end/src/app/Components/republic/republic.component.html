@@ -1,11 +1,32 @@
 <ion-card class="container">
-  <ion-label>Título</ion-label>
+  <ion-label class="bold">Título</ion-label>
   <ion-slides class="slides" pager="true">
     <ion-slide><img src="../../assets/republics/rep_1.png"></ion-slide>
     <ion-slide><img src="../../assets/republics/rep_2.png"></ion-slide>
     <ion-slide><img src="../../assets/republics/rep_3.png"></ion-slide>
   </ion-slides>
   
-  
-  
+  <ion-grid>
+    <ion-row>Categoria</ion-row>
+    <ion-row>Nome da rua</ion-row>
+    <ion-row>Bairro, Cidade</ion-row>
+    <ion-row>
+      <ion-col><ion-icon name="calculator"></ion-icon> XXm²</ion-col>
+      <ion-col><ion-icon name="bed"></ion-icon> X quartos</ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col><i class="fa fa-bath" aria-hidden="true"></i> X banheiros</ion-col>
+      <ion-col><ion-icon name="paw"></ion-icon> Não</ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col><ion-icon name="car"></ion-icon> Sim</ion-col>
+      <ion-col><ion-icon name="cash-outline"></ion-icon> R$XXX,XX</ion-col>
+    </ion-row>
+    
+    <ion-row class="aluguel">
+      <ion-button><ion-icon name="document-text-outline"></ion-icon></ion-button>
+    </ion-row>
+  </ion-grid>  
 </ion-card>

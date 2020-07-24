@@ -24,44 +24,37 @@ class CommentController extends Controller {
     return response()->json([$comment, 'Comentario & Relacao criada com sucesso!']);
   }
 
-  //list all comments
-  public function listComments() {
+  //list all comments existing
+  public function listAllComments() {
     $comment = Comment::all();
 
     return response()->json([$comment]);
   }
-/*
-  //list all comments
-  public function findCommentByUser(Request $request, $user_id) {
+
+  //list the comments made by an especific user
+  public function findCommentByUser($user_id) {
     $user = User::findOrFail($user_id);
 
-    if($comment) {
-      if($comment->user_id == $user_id) {
-        $comment = Comment::all();
-      }
-      return response()->json([$comment]);
-    }
-    else {
-      return response()->json(['Este User nao fez nenhum comentario ainda!']);
-    }
+    return response()->json([$user->comments]);
   }
-*/
+
   //user updates an existing comment
-  public function updateComment(Request $request, $id, $user_id) {
+  public function userUpdateComment(Request $request, $id, $user_id) {
     $comment = Comment::findOrFail($id);
     $user = User::findOrFail($user_id);
 
-    //validating request
-    if($comment){
-      if($comment->text){
-        $comment->text = $request->text;
+    $comments = $user->comments;
+    //relationship validation
+    foreach($comments as $user_comment) {
+      if($user_comment->id == $id) { //check if the comment with the $id has relation with the $user_id
+        $user_comment->text = $request->text; //if yes, update text attribute
+        $user_comment->save();
+        return response()->json([$user_comment, 'Comentario atualizado com sucesso!']);
       }
-        $comment->save();
-        return response()->json([$comment, 'Comentario atualizada com sucesso!']);
-      }
-      else {
-        return response()->json(['Este comentario nao existe']);
-      }
+    }
+
+    //if the comment has no relation with the user_id given, return an error
+    return response()->json(['Voce nao tem permissao para editar esse comentario!']);
   }
 
   //user deletes an existing republic (destroy relationship between user & republic)

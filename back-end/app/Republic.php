@@ -10,11 +10,11 @@ use App\Comments;
 class Republic extends Model {
   //a republic is created by one and only user
   public function users() {
-      return $this->belongsTo(App\User);
+      return $this->belongsTo('App\User');
   }
 
   //a republic can have n comments
   public function comments() {
-      return $this->hasMany(App\Comment);
+      return $this->hasMany('App\Comment');
   }
 }
