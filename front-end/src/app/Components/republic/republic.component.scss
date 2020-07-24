@@ -1,6 +1,6 @@
 .container {
-  width: 60vw;
-  height: 50vh;
+  width: 50vw;
+  height: 40vh;
   padding: 2vh;
   color: var(--ion-color-secondary); //creme
   font-family: Roboto Condensed Regular;
@@ -16,7 +16,10 @@ ion-slide img {
   width: 100vw;
 }
 
-.aluguel ion-button {
+.rent_button ion-button {
+  position: absolute;
+  top: 21vh;
+  right: 2vh;
   --background: transparent;
   color: var(--ion-color-primary);
   font-family: Roboto Condensed Bold;
@@ -25,4 +28,8 @@ ion-slide img {
 .bold {
   font-family: Roboto Condensed Bold;
   font-size: 1.2em;
+}
+
+.description {
+  font-size: 0.85em;
 }

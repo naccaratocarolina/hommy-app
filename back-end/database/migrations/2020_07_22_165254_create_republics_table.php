@@ -18,7 +18,7 @@ class CreateRepublicsTable extends Migration
             $table->string('name');
             $table->string('street');
             $table->integer('number');
-            $table->string('state');
+            $table->string('neighborhood');
             $table->string('city');
             $table->string('imagem_1')->nullable();
             $table->string('imagem_2')->nullable();
