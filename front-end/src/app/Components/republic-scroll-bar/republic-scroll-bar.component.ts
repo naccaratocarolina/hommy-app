@@ -81,5 +81,4 @@ export class RepublicScrollBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {}
-
 }
