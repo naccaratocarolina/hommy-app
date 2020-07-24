@@ -24,6 +24,12 @@ class CommentController extends Controller {
     return response()->json([$comment, 'Comentario & Relacao criada com sucesso!']);
   }
 
+  //find a comment by id
+  public function findComment($id) {
+    $comment = Comment::findOrFail($id);
+    return response()->json([$comment, 'Comentario encontrado com sucesso!']);
+  }
+
   //list all comments existing
   public function listAllComments() {
     $comment = Comment::all();
@@ -57,16 +63,50 @@ class CommentController extends Controller {
     return response()->json(['Voce nao tem permissao para editar esse comentario!']);
   }
 
-  //user deletes an existing republic (destroy relationship between user & republic)
+  //user deletes an existing comment (destroy relationship between user & comment)
   public function userDeleteComment($id, $user_id) {
     $comment = Comment::findOrFail($id);
     $user = User::findOrFail($user_id);
 
-    //deleting the relationship & the comment itself
-    Comment::destroy($id);
-    $comment->user_id = NULL;
+    //check if the comment belongs to user
+    $comments = $user->comments;
+    foreach($comments as $user_comment) {
+      if($user_comment->id == $id) {
+        Comment::destroy($id);
+        $comment->user_id = NULL;
+        $comment->save();
+        return response()->json([$comment, 'Comentario & Relacao deletada com sucesso!']);
+      }
+    }
+
+    return response()->json(['Voce nao tem permissao para editar esse comentario!']);
+  }
+
+  //create the relationship between comment & republic
+  public function pointsCommentToRepublic($id, $republic_id) {
+    $comment = Comment::findOrFail($id);
+    $republic = Republic::findOrFail($id);
+
+    $comment->republic_id = $republic_id;
     $comment->save();
 
-    return response()->json([$comment, 'Comentario & Relacao deletada com sucesso!']);
+    return response()->json([$comment, 'Relacao criada com sucesso!']);
+  }
+
+  //destroy the relationship between comment & republic
+  public function removesCommentFromRepublic($id, $republic_id) {
+    $comment = Comment::findOrFail($id);
+    $republic = Republic::findOrFail($id);
+
+    $comments = $republic_id->comments;
+    foreach($comments as $republic_comment) { //check if the comment has relation with the republic
+      if($republic_comment->id == $id) { //if yes, remove the relationtioship
+        $comment->republic_id = NULL;
+        $comment->save();
+        return response()->json([$comment, 'Relacao deletada com sucesso!']);
+      }
+    }
+
+    return response()->json([$comment, 'Voce nao tem permissao para realizar essa acao']);
   }
 }

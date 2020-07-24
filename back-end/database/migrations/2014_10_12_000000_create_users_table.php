@@ -15,12 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('nickname')->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('street')->nullable();
             $table->string('number')->nullable();
-            $table->string('state')->nullable();
+            $table->string('neighborhood')->nullable();
             $table->string('city')->nullable();
             $table->string('phone')->nullable(); //atributo multivalorado
             $table->string('date_birth')->nullable();

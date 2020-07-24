@@ -15,7 +15,7 @@ class CreateRepublicsTable extends Migration
     {
         Schema::create('republics', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('title');
             $table->string('street');
             $table->integer('number');
             $table->string('neighborhood');

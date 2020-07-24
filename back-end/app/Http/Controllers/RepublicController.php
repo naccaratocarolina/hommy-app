@@ -14,10 +14,10 @@ class RepublicController extends Controller {
     $republic = new Republic;
 
     //attributes
-    $republic->name = $request->name;
+    $republic->title = $request->title;
     $republic->street = $request->street;
     $republic->number = $request->number;
-    $republic->state = $request->state;
+    $republic->neighborhood = $request->neighborhood;
     $republic->city = $request->city;
     $republic->imagem_1 = $request->imagem_1;
     $republic->imagem_2 = $request->imagem_2;
@@ -57,8 +57,8 @@ class RepublicController extends Controller {
 
     //validating request
     if($republic){
-      if($request->name){
-        $republic->name = $request->name;
+      if($request->title){
+        $republic->title = $request->title;
       }
       if($request->street){
         $republic->street = $request->street;
@@ -66,8 +66,8 @@ class RepublicController extends Controller {
       if($request->number){
         $republic->number = $request->number;
       }
-      if($request->state){
-        $republic->state = $request->state;
+      if($request->neighborhood){
+        $republic->neighborhood = $request->neighborhood;
       }
       if($request->city){
         $republic->city = $request->city;

@@ -14,12 +14,12 @@ class UserController extends Controller {
     $user = new User;
 
     //attributes
-    $user->name = $request->name;
+    $user->nickname = $request->nickname;
     $user->email = $request->email;
     $user->password = $request->password;
     $user->street = $request->street;
     $user->number = $request->number;
-    $user->state = $request->state;
+    $user->neighborhood = $request->neighborhood;
     $user->city = $request->city;
     $user->phone = $request->phone;
     $user->date_birth = $request->date_birth;
@@ -47,7 +47,57 @@ class UserController extends Controller {
     return response()->json([$user]);
   }
 
-  //deletes an user
+  //update an existing user
+  public function updateUser(Request $request, $id) {
+    $user = User::find($id);
+
+    //validating request
+    if($user){
+      if($request->nickname){
+        $user->nickname = $request->nickname;
+      }
+      if($request->email){
+        $user->email = $request->email;
+      }
+      if($request->password){
+        $user->password = $request->password;
+      }
+      if($request->street){
+        $user->street = $request->street;
+      }
+      if($request->number){
+        $user->number = $request->number;
+      }
+      if($request->neighborhood){
+        $user->neighborhood = $request->neighborhood;
+      }
+      if($request->city){
+        $user->city = $request->city;
+      }
+      if($request->phone){
+        $user->phone = $request->phone;
+      }
+      if($request->date_birth){
+        $user->date_birth = $request->date_birth;
+      }
+      if($request->cpf){
+        $user->cpf = $request->cpf;
+      }
+      if($request->payment){
+        $user->payment = $request->payment;
+      }
+      if($request->can_post){
+        $user->can_post = $request->can_post;
+      }
+        $user->save();
+        return response()->json([$user, 'User atualizado com sucesso!']);
+      }
+      else {
+        return response()->json(['Este user nao existe']);
+      }
+  }
+
+  //deletes an existing user
   public function deleteUser(Request $request, $id){
     User::destroy($id);
 

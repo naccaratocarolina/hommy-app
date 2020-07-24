@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('findUser/{id}','UserController@findUser');
 Route::get('listUser','UserController@listUser');
 Route::post('createUser','UserController@createUser');
+Route::put('updateUser/{id}','UserController@updateUser');
 Route::delete('deleteUser/{id}','UserController@deleteUser');
 
 //RepublicController
@@ -34,8 +35,11 @@ Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic');
 Route::delete('userDeleteRepublic/{id}/{user_id}','RepublicController@userDeleteRepublic');
 
 //CommentController
-Route::post('userMakeComment/{user_id}','CommentController@userMakeComment');
 Route::get('listAllComments','CommentController@listAllComments');
+Route::get('findComment/{id}','CommentController@findComment');
 Route::get('findCommentByUser/{user_id}','CommentController@findCommentByUser');
+Route::post('userMakeComment/{user_id}','CommentController@userMakeComment');
+Route::post('pointsCommentToRepublic/{id}/{republic_id}','CommentController@pointsCommentToRepublic');
 Route::put('userUpdateComment/{id}/{user_id}','CommentController@userUpdateComment');
 Route::delete('userDeleteComment/{id}/{user_id}','CommentController@userDeleteComment');
+Route::delete('removesCommentFromRepublic/{id}/{republic_id}','CommentController@userDeleteComment');
