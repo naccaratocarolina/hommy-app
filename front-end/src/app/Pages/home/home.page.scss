@@ -2,6 +2,10 @@
   font-family: Roboto Condensed Regular;
 }
 
+ion-content::-webkit-scrollbar { //remove a scroll bar
+  display: none;
+}
+
 ion-menu-button {
   color: var(--ion-color-primary);
 }
