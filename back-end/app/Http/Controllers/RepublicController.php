@@ -106,10 +106,10 @@ class RepublicController extends Controller {
         $republic->description = $request->description;
       }
         $republic->save();
-        return response()->json([$republic, 'Reserva atualizada com sucesso!']);
+        return response()->json([$republic, 'Republica atualizada com sucesso!']);
       }
       else {
-        return response()->json(['Esta reserva nao existe']);
+        return response()->json(['Esta republica nao existe']);
       }
   }
 
@@ -117,7 +117,7 @@ class RepublicController extends Controller {
   public function deleteRepublic($id) {
     Republic::destroy($id);
 
-    return response()->json(['Reserva deletada com sucesso!']);
+    return response()->json(['Republica deletada com sucesso!']);
   }
 
   //user creates/announce a new republic (create relationship between user & republic)

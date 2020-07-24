@@ -42,4 +42,4 @@ Route::post('userMakeComment/{user_id}','CommentController@userMakeComment');
 Route::post('pointsCommentToRepublic/{id}/{republic_id}','CommentController@pointsCommentToRepublic');
 Route::put('userUpdateComment/{id}/{user_id}','CommentController@userUpdateComment');
 Route::delete('userDeleteComment/{id}/{user_id}','CommentController@userDeleteComment');
-Route::delete('removesCommentFromRepublic/{id}/{republic_id}','CommentController@userDeleteComment');
+Route::delete('removesCommentFromRepublic/{id}/{republic_id}','CommentController@removesCommentFromRepublic');

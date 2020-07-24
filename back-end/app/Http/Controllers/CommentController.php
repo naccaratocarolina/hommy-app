@@ -85,7 +85,7 @@ class CommentController extends Controller {
   //create the relationship between comment & republic
   public function pointsCommentToRepublic($id, $republic_id) {
     $comment = Comment::findOrFail($id);
-    $republic = Republic::findOrFail($id);
+    $republic = Republic::findOrFail($republic_id);
 
     $comment->republic_id = $republic_id;
     $comment->save();
@@ -96,9 +96,9 @@ class CommentController extends Controller {
   //destroy the relationship between comment & republic
   public function removesCommentFromRepublic($id, $republic_id) {
     $comment = Comment::findOrFail($id);
-    $republic = Republic::findOrFail($id);
+    $republic = Republic::findOrFail($republic_id);
 
-    $comments = $republic_id->comments;
+    $comments = $republic->comments;
     foreach($comments as $republic_comment) { //check if the comment has relation with the republic
       if($republic_comment->id == $id) { //if yes, remove the relationtioship
         $comment->republic_id = NULL;
@@ -107,6 +107,6 @@ class CommentController extends Controller {
       }
     }
 
-    return response()->json([$comment, 'Voce nao tem permissao para realizar essa acao']);
+    return response()->json(['Voce nao tem permissao para realizar essa acao!']);
   }
 }

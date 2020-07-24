@@ -101,6 +101,6 @@ class UserController extends Controller {
   public function deleteUser(Request $request, $id){
     User::destroy($id);
 
-    return response()->json(['User deletada com sucesso!']);
+    return response()->json(['User deletado com sucesso!']);
   }
 }
