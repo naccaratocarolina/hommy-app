@@ -28,9 +28,26 @@
         </ion-row>
         
         <ion-row>
-          <ion-col><ion-button type="rent"><ion-icon name="document-text-outline"></ion-icon></ion-button></ion-col>
-          <ion-col><ion-button type="rate"><ion-icon name="star-outline"></ion-icon></ion-button></ion-col>
-          <ion-col><ion-button type="rate"><ion-icon name="thumbs-up"></ion-icon></ion-button></ion-col>
+          <ion-col>
+            <ion-button type="rent" (click)="toRent()">
+              <ion-icon name="document-text-outline" *ngIf="!rent"></ion-icon>
+              <ion-icon name="document-text" *ngIf="rent"></ion-icon>
+            </ion-button>
+          </ion-col>
+          
+          <ion-col>
+            <ion-button type="fav" (click)="toFav()">
+              <ion-icon name="heart-outline" *ngIf="!fav"></ion-icon>
+              <ion-icon name="heart" *ngIf="fav"></ion-icon>
+            </ion-button>
+          </ion-col>
+          
+          <ion-col>
+            <ion-button type="rate" (click)="toRate()">
+              <ion-icon name="star-outline" *ngIf="!rate"></ion-icon>
+              <ion-icon name="star" *ngIf="rate"></ion-icon>
+            </ion-button>
+          </ion-col>
         </ion-row>
       </ion-grid>  
     </ion-card>

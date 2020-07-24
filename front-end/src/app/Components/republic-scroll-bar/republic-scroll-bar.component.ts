@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./republic-scroll-bar.component.scss'],
 })
 export class RepublicScrollBarComponent implements OnInit {
+  public rent: boolean = false;
+  public fav: boolean = false;
+  public rate: boolean = false;
+
   public arrayRepublicas = [
     {
       name: 'Republica 1',
@@ -81,4 +85,17 @@ export class RepublicScrollBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {}
+
+  toRent() {
+   this.rent = !this.rent;
+  }
+
+  toFav() {
+   this.fav = !this.fav;
+  }
+
+  toRate() {
+   this.rate = !this.rate;
+  }
+
 }
