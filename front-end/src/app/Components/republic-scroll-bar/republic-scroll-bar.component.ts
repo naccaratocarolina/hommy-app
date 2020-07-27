@@ -59,11 +59,11 @@ export class RepublicScrollBarComponent implements OnInit {
         number: 3,
         neighborhood: 'Bairro 3',
         city: 'Rio de Janeiro',
-        category: 'Apartamento',
+        category: 'Casa',
         rental_per_month: 3432,
         footage:300,
-        number_bath: 1,
-        number_bed: 1,
+        number_bath: 2,
+        number_bed: 2,
         parking: 'Sim',
         animals: 'Sim'
       }
@@ -77,11 +77,11 @@ export class RepublicScrollBarComponent implements OnInit {
         number: 4,
         neighborhood: 'Bairro 4',
         city: 'Rio de Janeiro',
-        category: 'Apartamento',
+        category: 'Casa',
         rental_per_month: 3432,
         footage:300,
-        number_bath: 1,
-        number_bed: 1,
+        number_bath: 2,
+        number_bed: 3,
         parking: 'Não',
         animals: 'Não'
       }
