@@ -9,10 +9,11 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 
 use App\User;
 use App\Republic;
+use App\Http\Requests\RepublicRequest;
 
 class RepublicController extends Controller {
   //create a new republic
-  public function createRepublic(Request $request) {
+  public function createRepublic(RepublicRequest $request) {
     //creating a Republic object called republic
     $republic = new Republic;
 
@@ -37,6 +38,7 @@ class RepublicController extends Controller {
     //saving
     $republic->save();
 
+    /*
     //validator
     $validator = Validator::make($request->all(), [
       'title' => 'required|string',
@@ -51,7 +53,7 @@ class RepublicController extends Controller {
 
     if($validator->fails()) {
       return response()->json($validator->errors());
-    }
+    }*/
 
     //returning json
     return response()->json([$republic, 'Republica criada com sucesso!']);
@@ -71,7 +73,7 @@ class RepublicController extends Controller {
   }
 
   //update an existing republic
-  public function updateRepublic(Request $request, $id) {
+  public function updateRepublic(RepublicRequest $request, $id) {
     $republic = Republic::find($id);
 
     //validating request

@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Comment;
 use App\Republic;
+use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller {
   //user make a comment
-  public function userMakeComment(Request $request, $user_id) {
+  public function userMakeComment(CommentRequest $request, $user_id) {
     $comment = new Comment;
     $user = User::findOrFail($user_id);
 
@@ -45,7 +46,7 @@ class CommentController extends Controller {
   }
 
   //user updates an existing comment
-  public function userUpdateComment(Request $request, $id, $user_id) {
+  public function userUpdateComment(CommentRequest $request, $id, $user_id) {
     $comment = Comment::findOrFail($id);
     $user = User::findOrFail($user_id);
 

@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('phone')->nullable(); //atributo multivalorado
             $table->string('date_birth')->nullable();
-            $table->string('cpf')->nullable();
+            $table->string('cpf')->unique()->nullable();
             $table->float('payment')->nullable();
             $table->boolean('can_post')->nullable();
             $table->rememberToken();

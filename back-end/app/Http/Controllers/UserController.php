@@ -9,9 +9,10 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 
 use App\User;
 use App\Republic;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller {
-  public function createUser(Request $request) {
+  public function createUser(UserRequest $request) {
     $user = new User;
 
     //attributes
@@ -31,17 +32,19 @@ class UserController extends Controller {
     //saving
     $user->save();
 
+    /*
     //validator
     $validator = Validator::make($request->all(), [
-      'nickname' => 'required|string',
+      'nickname' => 'required|string|unique:Users, nickname',
       'email' => 'required|email|unique:Users, email',
       'password' => 'required|min:8',
-      'phone' => 'required|min:9|numeric'
+      'phone' => 'required|min:9|numeric',
+      'cpf' => 'required|digits:11|numeric|unique:Users, cpf'
     ]);
 
     if($validator->fails()) {
       return response()->json($validator->errors());
-    }
+    }*/
 
     //returning json
     return response()->json([$user, 'User criado com sucesso!']);
@@ -61,7 +64,7 @@ class UserController extends Controller {
   }
 
   //update an existing user
-  public function updateUser(Request $request, $id) {
+  public function updateUser(UserRequest $request, $id) {
     $user = User::find($id);
 
     //validating request
