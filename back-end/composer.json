@@ -60,5 +60,5 @@
             "@php artisan key:generate --ansi"
         ]
     },
-    "laravellegends/pt-br-validator" : "6.*"
+    "laravellegends/pt-br-validator" : "7.*"
 }

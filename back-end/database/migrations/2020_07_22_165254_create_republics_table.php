@@ -50,4 +50,3 @@ class CreateRepublicsTable extends Migration
         Schema::dropIfExists('republics');
     }
 }
-;
