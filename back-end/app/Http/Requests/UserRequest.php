@@ -18,8 +18,8 @@ class UserRequest extends FormRequest {
           'nickname' => 'required|string',
           'email' => 'required|email|unique:users, email',
           'password' => 'required|min:8',
-          'phone' => 'min:9|numeric',
-          'cpf' => 'digits:11|numeric|unique:users, cpf'
+          'phone' => 'min:9|string|telefone',
+          'cpf' => 'digits:10|string|formato_cpf|unique:users, cpf'
         ];
     }
 
