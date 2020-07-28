@@ -3,36 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 use App\User;
 use App\Republic;
 
 class UserController extends Controller {
-  //creates a new user
   public function createUser(Request $request) {
-    //validator
-    $validator = Validator::make($request->all(), [
-      'nickname' => 'required|string',
-      'email' => 'required|email|unique:Users, email',
-      'password' => 'required|min:8',
-      'street' => 'required|string',
-      'number' => 'required|integer',
-      'neighborhood' => 'required|string',
-      'city' => 'required|string',
-      'phone' => 'required|min:9|numeric',
-      'date_birth' => 'required|date_format:d/m/Y',
-      'cpf' => 'required|digits:11',
-      'payment' => 'required|string',
-      'can_post' => 'required|boolean'
-    ]);
-
-    if($validator->fails()) {
-      return responde()->json($validator->errors());
-    }
-
-    $validator = Validador
-    //creating a User object called user
     $user = new User;
 
     //attributes
@@ -51,6 +30,18 @@ class UserController extends Controller {
 
     //saving
     $user->save();
+
+    //validator
+    $validator = Validator::make($request->all(), [
+      'nickname' => 'required|string',
+      'email' => 'required|email|unique:Users, email',
+      'password' => 'required|min:8',
+      'phone' => 'required|min:9|numeric'
+    ]);
+
+    if($validator->fails()) {
+      return response()->json($validator->errors());
+    }
 
     //returning json
     return response()->json([$user, 'User criado com sucesso!']);

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 use App\User;
 use App\Republic;
@@ -33,6 +36,22 @@ class RepublicController extends Controller {
 
     //saving
     $republic->save();
+
+    //validator
+    $validator = Validator::make($request->all(), [
+      'title' => 'required|string',
+      'street' => 'required|string',
+      'number' => 'required|integer',
+      'neighborhood' => 'required|string',
+      'city' => 'required|string',
+      'category' => 'required|string',
+      'rental_per_month' => 'required|numeric',
+      'footage' => 'required|numeric'
+    ]);
+
+    if($validator->fails()) {
+      return response()->json($validator->errors());
+    }
 
     //returning json
     return response()->json([$republic, 'Republica criada com sucesso!']);
