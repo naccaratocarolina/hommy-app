@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         //LaravelLegends\PtBrValidator\ValidatorProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
 
 
         /*

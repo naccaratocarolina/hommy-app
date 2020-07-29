@@ -8,12 +8,14 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\CommentRequest;
+use Laravel\Passport\HasApiTokens;
 
 use App\Comment;
 use App\Republic;
 
 class User extends Authenticatable {
     use Notifiable;
+    use HasApiTokens;
 
     /*
      * Relationship One to One
