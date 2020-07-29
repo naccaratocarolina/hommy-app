@@ -4,15 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterUserTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
+/*
+ * Table that alters User Table after its creation
+ */
+
+class AlterUserTable extends Migration {
+    public function up() {
       Schema::table('users', function (Blueprint $table) {
         $table->unsignedBigInteger('republic_id')->nullable();
       });
@@ -27,8 +24,9 @@ class AlterUserTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        //
+    public function down() {
+      Schema::table('users', function (Blueprint $table) {
+        $table->dropColumn('republic_id');
+      });
     }
 }

@@ -12,41 +12,94 @@ use App\User;
 use App\Republic;
 
 class RepublicController extends Controller {
-  //create a new republic
-  public function createRepublic(RepublicRequest $request) {
-    $republic = new Republic;
-    $republic->createRepublic($request);
+  /*
+   * Relationship One to One
+   * User rents Republic
+   * Republic can be rented by only 1 user
+   */
+    public function tenant($id) { //lista is locatarios
+        $republic = Republic::findOrFail($id);
+        $tenants = $republic->tenant()->get();
+        return response()->json($tenants);
+    }
 
-    return response()->json([$republic, 'Republica criada com sucesso!']);
-  }
+    /*
+     * Relationship One to Many
+     * User announces Republic
+     * A Republic can only be announced by 1 user
+     */
+    public function locator($id) { //locador
+      $republic = Republic::findOrFail($id);
+      return response()->json($republic->user);
+    }
 
-  //find a republic by id
-  public function findRepublic($id) {
-    $republic = Republic::findOrFail($id);
-    return response()->json([$republic, 'Republica encontrada com sucesso!']);
-  }
+    /*
+     * Relationship Many to Many
+     * User favorites Republic
+     * A Republic can be favorited by n Users
+     */
+     public function favoritedBy($id) {
+       $republic = Republic::findOrFail($id);
+       return response()->json($republic->favorites);
+     }
 
-  //list all republics on the database
-  public function listRepublic() {
-    $republic = Republic::all();
+    /*
+     * Relationship One to Many
+     * Republic owns Comment
+     * Republic can own n Comments
+     */
+     public function owns($republic_id) {
+       $republic = Republic::findOrFail($republic_id);
+       $republic->owns($republic_id);
+       return response()->json($comment);
+     }
 
-    return response()->json([$republic]);
-  }
+     public function listComments($id) {
+       $republic = Republic::findOrFail($id);
+       return response()->json($republic->comments);
+     }
 
-  //update an existing republic
-  public function updateRepublic(RepublicRequest $request, $id) {
-    $republic = Republic::find($id);
-    $republic->updateRepublic($request);
-    return response()->json([$republic, 'Republica atualizada com sucesso!']);
-  }
+     /*
+      * Basic CRUD for Republic
+      * create, find, list, update, delete
+      */
 
-  //destroy/delete an existing republic
-  public function deleteRepublic($id) {
-    Republic::destroy($id);
+     //create a new republic
+     public function createRepublic(RepublicRequest $request) {
+       $republic = new Republic;
+       $republic->createRepublic($request);
 
-    return response()->json(['Republica deletada com sucesso!']);
-  }
+       return response()->json([$republic, 'Republica criada com sucesso!']);
+     }
 
+     //find a republic by id
+     public function findRepublic($id) {
+       $republic = Republic::findOrFail($id);
+       return response()->json([$republic, 'Republica encontrada com sucesso!']);
+     }
+
+     //list all republics on the database
+     public function listRepublic() {
+       $republic = Republic::all();
+
+       return response()->json([$republic]);
+     }
+
+     //update an existing republic
+     public function updateRepublic(Request $request, $id) {
+       $republic = Republic::find($id);
+       $republic->updateRepublic($request);
+       return response()->json([$republic, 'Republica atualizada com sucesso!']);
+     }
+
+     //destroy/delete an existing republic
+     public function deleteRepublic($id) {
+       Republic::destroy($id);
+
+       return response()->json(['Republica deletada com sucesso!']);
+     }
+
+/*
   //user creates/announce a new republic (create relationship between user & republic)
   public function userAnnounceRepublic($id, $user_id) {
     $republic = Republic::findOrFail($id);
@@ -79,5 +132,5 @@ class RepublicController extends Controller {
   public function owner($id) { //locador, dono da republica
     $republic = Republic::findOrFail($id);
     return response()->json([$republic->user, 'Dono da republica localizado com sucesso!']);
-  }
+  }*/
 }

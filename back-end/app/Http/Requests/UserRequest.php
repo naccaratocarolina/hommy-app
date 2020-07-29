@@ -16,10 +16,10 @@ class UserRequest extends FormRequest {
     public function rules() {
         return [
           'nickname' => 'required|string',
-          'email' => 'required|email|unique:users, email',
+          'email' => 'required|email|unique:users',
           'password' => 'required|min:8',
           'phone' => 'min:9|string|telefone',
-          'cpf' => 'digits:10|string|formato_cpf|unique:users, cpf'
+          'cpf' => 'digits:10|string|formato_cpf|unique:users'
         ];
     }
 

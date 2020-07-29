@@ -3,55 +3,39 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 
 use App\User;
 use App\Comment;
 use App\Republic;
-use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller {
-  //user make a comment
-  public function userMakeComment(CommentRequest $request, $user_id) {
-    $comment = new Comment;
+  /*
+   * Relationship One to Many
+   * User post Comment
+   * A Comment is made by 1 User
+   */
+   public function post($id) {
+     $comment = Comment::findOrFail($id);
+     $comment->user_id = $user_id;
+     $this->save();
+   }
+
+   public function postedBy($id) {
+     $comment = Comment::findOrFail($id);
+     return response()->json($comment->user);
+   }
+
+   public function findCommentByUser($user_id) {
     $user = User::findOrFail($user_id);
-
-    //attributes
-    $comment->text = $request->text;
-
-    //creating the relationship & saving
-    $comment->user_id = $user_id;
-    $comment->save();
-
-    return response()->json([$comment, 'Comentario & Relacao criada com sucesso!']);
-  }
-
-  //find a comment by id
-  public function findComment($id) {
-    $comment = Comment::findOrFail($id);
-    return response()->json([$comment, 'Comentario encontrado com sucesso!']);
-  }
-
-  //list all comments existing
-  public function listAllComments() {
-    $comment = Comment::all();
-
-    return response()->json([$comment]);
-  }
-
-  //list the comments made by an especific user
-  public function findCommentByUser($user_id) {
-    $user = User::findOrFail($user_id);
-
     return response()->json([$user->comments]);
   }
 
-  //user updates an existing comment
   public function userUpdateComment(CommentRequest $request, $id, $user_id) {
     $comment = Comment::findOrFail($id);
     $user = User::findOrFail($user_id);
 
     $comments = $user->comments;
-    //relationship validation
     foreach($comments as $user_comment) {
       if($user_comment->id == $id) { //check if the comment with the $id has relation with the $user_id
         $user_comment->text = $request->text; //if yes, update text attribute
@@ -59,12 +43,9 @@ class CommentController extends Controller {
         return response()->json([$user_comment, 'Comentario atualizado com sucesso!']);
       }
     }
-
-    //if the comment has no relation with the user_id given, return an error
     return response()->json(['Voce nao tem permissao para editar esse comentario!']);
   }
 
-  //user deletes an existing comment (destroy relationship between user & comment)
   public function userDeleteComment($id, $user_id) {
     $comment = Comment::findOrFail($id);
     $user = User::findOrFail($user_id);
@@ -83,31 +64,67 @@ class CommentController extends Controller {
     return response()->json(['Voce nao tem permissao para editar esse comentario!']);
   }
 
-  //create the relationship between comment & republic
-  public function pointsCommentToRepublic($id, $republic_id) {
-    $comment = Comment::findOrFail($id);
-    $republic = Republic::findOrFail($republic_id);
-
-    $comment->republic_id = $republic_id;
-    $comment->save();
-
-    return response()->json([$comment, 'Relacao criada com sucesso!']);
-  }
-
-  //destroy the relationship between comment & republic
-  public function removesCommentFromRepublic($id, $republic_id) {
-    $comment = Comment::findOrFail($id);
-    $republic = Republic::findOrFail($republic_id);
-
-    $comments = $republic->comments;
-    foreach($comments as $republic_comment) { //check if the comment has relation with the republic
-      if($republic_comment->id == $id) { //if yes, remove the relationtioship
-        $comment->republic_id = NULL;
-        $comment->save();
-        return response()->json([$comment, 'Relacao deletada com sucesso!']);
-      }
+   /*
+    * Relationship One to Many
+    * Republic owns Comment
+    * A Comment belongs to 1 Republic
+    */
+    public function ownedBy($id) {
+      $comment = Comment::findOrFail($id);
+      return response()->json($comment->republic);
     }
 
-    return response()->json(['Voce nao tem permissao para realizar essa acao!']);
-  }
+    public function removesCommentFromRepublic($id, $republic_id) {
+        $comment = Comment::findOrFail($id);
+        $republic = Republic::findOrFail($republic_id);
+
+        $comments = $republic->comments;
+        foreach($comments as $republic_comment) { //check if the comment has relation with the republic
+        if($republic_comment->id == $id) { //if yes, remove the relationtioship
+            $comment->republic_id = NULL;
+            $comment->save();
+            return response()->json([$comment, 'Relacao deletada com sucesso!']);
+        }
+      }
+
+        return response()->json(['Voce nao tem permissao para realizar essa acao!']);
+    }
+
+   /*
+    * Basic CRUD for Comment
+    * create, find, list, update, delete
+    */
+    //creates a new comment
+    public function createComment(CommentRequest $request) {
+      $comment = new Comment;
+      $comment->createComment($request);
+      return response()->json([$comment, 'Comentario criado com sucesso!']);
+    }
+
+    //find an especific comment by id
+    public function findComment(Request $request, $id){
+      $comment = Comment::findOrFail($id);
+      return response()->json($comment);
+    }
+
+    //list all comments
+    public function listComment(Request $request){
+      $comment = Comment::all();
+
+      return response()->json([$comment]);
+    }
+
+    //update an existing comment
+    public function updateComment(CommentRequest $request, $id) {
+      $comment = Comment::find($id);
+      $comment->updateComment($request);
+      return response()->json([$comment, 'Comentario atualizado com sucesso!']);
+    }
+
+    //deletes an existing comment
+    public function deleteComment(Request $request, $id){
+      Comment::destroy($id);
+
+      return response()->json(['Comentario deletado com sucesso!']);
+    }
 }

@@ -7,43 +7,66 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\CommentRequest;
 
-use App\Republics;
-use App\Comments;
+use App\Comment;
+use App\Republic;
 
 class User extends Authenticatable {
     use Notifiable;
 
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    /*
+     * Relationship One to One
+     * User rents Republic
+     * User can rent only 1 Republic
+     */
+     public function republic() {
+       return $this->belongsTo('App\Republic');
+     }
 
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function rent($republic_id) {
+        $republic = Republic::findOrFail($republic_id);
+        $this->republic_id = $republic_id;
+        $this->save();
+    }
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function removeRent($republic_id) {
+        $republic = Republic::findOrFail($republic_id);
+        $this->republic_id = NULL;
+        $this->save();
+    }
 
-    //Relationships
+    /*
+     * Relationship One to Many
+     * User announces Republic
+     * User can announce n Republics
+     */
     public function republics() {
         return $this->hasMany('App\Republic');
     }
 
-    public function comments() {
-        return $this->hasMany('App\Comment');
-    }
-
-    public function tenantUser() {
-      return $this->hasOne('App\User');
-    }
-
+    /*
+     * Relationship Many to Many
+     * User favorites Republic
+     * User can favorite n Republics
+     */
     public function favorites() {
       return $this->belongsToMany('App\Republic');
     }
 
-    //Methods
+    /*
+     * Relationship One to Many
+     * User post Comment
+     * User can post n Comments
+     */
+    public function comments() {
+        return $this->hasMany('App\Comments');
+    }
+
+    /*
+     * CRUD functions
+     * create & update
+     */
     public function createUser(UserRequest $request) {
       $this->nickname = $request->nickname;
       $this->email = $request->email;
@@ -58,11 +81,10 @@ class User extends Authenticatable {
       $this->payment = $request->payment;
       $this->can_post = $request->can_post;
 
-      //saving
       $this->save();;
     }
 
-    public function updateUser(UserRequest $request, $id) {
+    public function updateUser(Request $request) {
       if($request->nickname){
           $this->nickname = $request->nickname;
       }
@@ -99,14 +121,19 @@ class User extends Authenticatable {
       if($request->can_post){
         $this->can_post = $request->can_post;
       }
-        $this->save();
-    }
 
-    public function rent($user_id, $republic_id) {
-      $republic = Republic::findOrFail($id);
-      $this->republic_id = $republic_id;
       $this->save();
-
-      return response()->json($user);
     }
+
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
   }
