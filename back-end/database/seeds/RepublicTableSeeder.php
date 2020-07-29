@@ -13,11 +13,28 @@ class RepublicTableSeeder extends Seeder
         factory (App\Republic::class, 12)->create()->each(function ($republic) {
           $comments = factory(App\Comment::class, 2)->make();
           $user = factory(App\User::class)->make();
-          //relacao 1-n
-          $republic->comments()->saveMany($comments);
-          //relacao 1-1
+          /*
+           * Relationship One to One
+           * User rents Republic
+           */
           $republic->tenant()->save($user);
-          //relacao n-n
+
+          /*
+           * Relationship One to Many
+           * Republic owns Comment
+           */
+          $republic->comments()->saveMany($comments);
+
+          /*
+           * Relationship One to Many
+           * User announces Republic
+           */
+           $user = App\User::find($republic->user_id);
+
+          /*
+           * Relationship Many to Many
+           * User favorites Republic
+           */
           $user->favorites()->attach($republic);
         });
     }

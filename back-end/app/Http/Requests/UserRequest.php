@@ -15,7 +15,7 @@ class UserRequest extends FormRequest {
     //validation rules
     public function rules() {
         return [
-          'nickname' => 'required|string',
+          'name' => 'required|string',
           'email' => 'required|email|unique:users',
           'password' => 'required|min:8',
           'phone' => 'min:9|string|telefone',
