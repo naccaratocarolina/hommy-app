@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Requests\RepublicRequest;
 
-use App\Users;
-use App\Comments;
+use App\User;
+use App\Comment;
 
 class Republic extends Model {
     /*
@@ -55,7 +55,7 @@ class Republic extends Model {
        * Republic can own n Comments
        */
        public function comments() {
-           return $this->hasMany('App\Comments');
+           return $this->hasMany('App\Comment');
        }
 
       /*
@@ -66,10 +66,7 @@ class Republic extends Model {
           $republic = new Republic;
 
           $this->title = $request->title;
-          $this->street = $request->street;
-          $this->number = $request->number;
-          $this->neighborhood = $request->neighborhood;
-          $this->city = $request->city;
+          $this->address = $request->address;
           $this->imagem_1 = $request->imagem_1;
           $this->imagem_2 = $request->imagem_2;
           $this->imagem_3 = $request->imagem_3;
@@ -89,17 +86,8 @@ class Republic extends Model {
           if($request->title){
            $this->title = $request->title;
           }
-         if($request->street){
-          $this->street = $request->street;
-         }
-         if($request->number){
-           $this->number = $request->number;
-         }
-         if($request->neighborhood){
-           $this->neighborhood = $request->neighborhood;
-         }
-         if($request->city){
-           $this->city = $request->city;
+         if($request->address){
+          $this->address = $request->address;
          }
          if($request->imagem_1){
            $this->imagem_1 = $request->imagem_1;

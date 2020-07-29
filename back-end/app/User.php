@@ -62,7 +62,7 @@ class User extends Authenticatable {
      * User can post n Comments
      */
     public function comments() {
-        return $this->hasMany('App\Comments');
+        return $this->hasMany('App\Comment');
     }
 
     /*
@@ -70,13 +70,10 @@ class User extends Authenticatable {
      * create & update
      */
     public function createUser(UserRequest $request) {
-      $this->nickname = $request->nickname;
+      $this->name = $request->name;
       $this->email = $request->email;
-      $this->password = $request->password;
-      $this->street = $request->street;
-      $this->number = $request->number;
-      $this->neighborhood = $request->neighborhood;
-      $this->city = $request->city;
+      $this->password = bcrypt($request->password);
+      $this->address = $request->address;
       $this->phone = $request->phone;
       $this->date_birth = $request->date_birth;
       $this->cpf = $request->cpf;
@@ -87,26 +84,17 @@ class User extends Authenticatable {
     }
 
     public function updateUser(Request $request) {
-      if($request->nickname){
-          $this->nickname = $request->nickname;
+      if($request->name){
+          $this->name = $request->name;
       }
       if($request->email){
         $this->email = $request->email;
       }
       if($request->password){
-        $this->password = $request->password;
+        $this->password = bcrypt($request->password);
       }
-      if($request->street){
-        $this->street = $request->street;
-      }
-      if($request->number){
-        $this->number = $request->number;
-      }
-      if($request->neighborhood){
-        $this->neighborhood = $request->neighborhood;
-      }
-      if($request->city){
-        $this->city = $request->city;
+      if($request->address){
+        $this->address = $request->address;
       }
       if($request->phone){
         $this->phone = $request->phone;
