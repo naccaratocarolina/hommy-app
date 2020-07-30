@@ -16,14 +16,9 @@ class CreateRepublicsTable extends Migration
         Schema::create('republics', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('street');
-            $table->integer('number');
-            $table->string('neighborhood');
-            $table->string('city');
-            $table->string('imagem_1')->nullable();
-            $table->string('imagem_2')->nullable();
-            $table->string('imagem_3')->nullable();
-            $table->string('category');
+            $table->string('address');
+            $table->string('image')->nullable();
+            $table->string('category')->nullable();
             $table->float('rental_per_month');
             $table->float('footage');
             $table->integer('number_bath')->nullable();

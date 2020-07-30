@@ -59,6 +59,5 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    },
-    "laravellegends/pt-br-validator" : "7.*"
+    }
 }

@@ -15,11 +15,9 @@ class UserRequest extends FormRequest {
     //validation rules
     public function rules() {
         return [
-          'nickname' => 'required|string',
+          'name' => 'required|string',
           'email' => 'required|email|unique:users',
           'password' => 'required|min:8',
-          'phone' => 'min:9|string|telefone',
-          'cpf' => 'digits:10|string|formato_cpf|unique:users'
         ];
     }
 
@@ -27,9 +25,7 @@ class UserRequest extends FormRequest {
     public function messages() {
         return [
           'email.email' =>'Insira um email válido',
-          'email.unique' =>'Este email já existe',
-          'cpf.cpf' => 'O campo não é um CPF válido',
-          'cpf.unique' => 'Este cpf ja existe'
+          'email.unique' =>'Este email já existe'
         ];
     }
 

@@ -14,12 +14,8 @@ class RepublicRequest extends FormRequest {
 
     public function rules() {
         return [
-          'title' => 'required|string',
-          'street' => 'required|string',
-          'number' => 'required|integer',
-          'neighborhood' => 'required|string',
-          'city' => 'required|string',
-          'category' => 'required|string',
+          'title' => 'required|string|max:100',
+          'address' => 'required|string',
           'rental_per_month' => 'required|numeric',
           'footage' => 'required|numeric'
         ];

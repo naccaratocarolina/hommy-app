@@ -66,13 +66,11 @@ class Republic extends Model {
           $republic = new Republic;
 
           $this->title = $request->title;
-          $this->street = $request->street;
+          $this->address = $request->address;
           $this->number = $request->number;
           $this->neighborhood = $request->neighborhood;
           $this->city = $request->city;
-          $this->imagem_1 = $request->imagem_1;
-          $this->imagem_2 = $request->imagem_2;
-          $this->imagem_3 = $request->imagem_3;
+          $this->image = $request->image;
           $this->category = $request->category;
           $this->rental_per_month = $request->rental_per_month;
           $this->footage = $request->footage;
@@ -89,26 +87,11 @@ class Republic extends Model {
           if($request->title){
            $this->title = $request->title;
           }
-         if($request->street){
-          $this->street = $request->street;
+         if($request->address){
+          $this->address = $request->address;
          }
-         if($request->number){
-           $this->number = $request->number;
-         }
-         if($request->neighborhood){
-           $this->neighborhood = $request->neighborhood;
-         }
-         if($request->city){
-           $this->city = $request->city;
-         }
-         if($request->imagem_1){
-           $this->imagem_1 = $request->imagem_1;
-         }
-         if($request->imagem_2){
-           $this->imagem_2 = $request->imagem_2;
-         }
-         if($request->imagem_3){
-           $this->imagem_3 = $request->imagem_3;
+         if($request->image){
+           $this->image = $request->image;
          }
          if($request->category){
            $this->category = $request->category;

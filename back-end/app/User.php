@@ -68,25 +68,21 @@ class User extends Authenticatable {
      * create & update
      */
     public function createUser(UserRequest $request) {
-      $this->nickname = $request->nickname;
+      $this->name = $request->name;
       $this->email = $request->email;
       $this->password = $request->password;
-      $this->street = $request->street;
-      $this->number = $request->number;
-      $this->neighborhood = $request->neighborhood;
-      $this->city = $request->city;
+      $this->address = $request->address;
       $this->phone = $request->phone;
       $this->date_birth = $request->date_birth;
       $this->cpf = $request->cpf;
       $this->payment = $request->payment;
-      $this->can_post = $request->can_post;
 
       $this->save();;
     }
 
     public function updateUser(Request $request) {
-      if($request->nickname){
-          $this->nickname = $request->nickname;
+      if($request->name){
+          $this->name = $request->name;
       }
       if($request->email){
         $this->email = $request->email;
@@ -94,17 +90,8 @@ class User extends Authenticatable {
       if($request->password){
         $this->password = $request->password;
       }
-      if($request->street){
-        $this->street = $request->street;
-      }
-      if($request->number){
-        $this->number = $request->number;
-      }
-      if($request->neighborhood){
-        $this->neighborhood = $request->neighborhood;
-      }
-      if($request->city){
-        $this->city = $request->city;
+      if($request->address){
+        $this->address = $request->address;
       }
       if($request->phone){
         $this->phone = $request->phone;
@@ -117,9 +104,6 @@ class User extends Authenticatable {
       }
       if($request->payment){
         $this->payment = $request->payment;
-      }
-      if($request->can_post){
-        $this->can_post = $request->can_post;
       }
 
       $this->save();
