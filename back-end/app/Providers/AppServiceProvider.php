@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Faker\Generator as FakerGenerator;
+use Faker\Factory as FakerFactory;
 
 class AppServiceProvider extends ServiceProvider
 {

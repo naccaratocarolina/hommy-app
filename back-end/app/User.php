@@ -72,7 +72,7 @@ class User extends Authenticatable {
     public function createUser(UserRequest $request) {
       $this->name = $request->name;
       $this->email = $request->email;
-      $this->password = $request->password;
+      $this->password = bcrypt($request->password);
       $this->address = $request->address;
       $this->phone = $request->phone;
       $this->date_birth = $request->date_birth;
@@ -90,7 +90,7 @@ class User extends Authenticatable {
         $this->email = $request->email;
       }
       if($request->password){
-        $this->password = $request->password;
+        $this->password = bcrypt($request->password);
       }
       if($request->address){
         $this->address = $request->address;
