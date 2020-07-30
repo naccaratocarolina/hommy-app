@@ -62,7 +62,7 @@ class User extends Authenticatable {
      * User can post n Comments
      */
     public function comments() {
-        return $this->hasMany('App\Comments');
+        return $this->hasMany('App\Comment');
     }
 
     /*

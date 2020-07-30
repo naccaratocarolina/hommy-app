@@ -55,7 +55,7 @@ class Republic extends Model {
        * Republic can own n Comments
        */
        public function comments() {
-           return $this->hasMany('App\Comments');
+           return $this->hasMany('App\Comment');
        }
 
       /*
