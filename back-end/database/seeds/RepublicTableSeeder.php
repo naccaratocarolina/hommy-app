@@ -36,6 +36,6 @@ class RepublicTableSeeder extends Seeder
            * User favorites Republic
            */
           $user->favorites()->attach($republic);
-        });
-    }
+      }
+  }
 }
