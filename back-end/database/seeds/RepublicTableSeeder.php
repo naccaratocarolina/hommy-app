@@ -1,6 +1,9 @@
 
 <?php
 
+use App\Republic;
+use App\Comment;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class RepublicTableSeeder extends Seeder
@@ -11,32 +14,21 @@ class RepublicTableSeeder extends Seeder
      * @return void
      */
     public function run() {
-        factory (App\Republic::class, 12)->create()->each(function ($republic) {
-          $comments = factory(App\Comment::class, 2)->make();
-          $user = factory(App\User::class)->make();
-          /*
-           * Relationship One to One
-           * User rents Republic
-           */
+        factory(Republic::class, 12)->create()->each(function ($republic) {
+          $comments = factory(Comment::class, 2)->make();
+          $user = factory(User::class)->make();
+
+          //User rents Republic 1:1
           $republic->tenant()->save($user);
 
-          /*
-           * Relationship One to Many
-           * Republic owns Comment
-           */
+          //Republic owns Comment 1:n
           $republic->comments()->saveMany($comments);
 
-          /*
-           * Relationship One to Many
-           * User announces Republic
-           */
-           $user = App\User::find($republic->user_id);
+          //User announces Republic 1:n
+           $user = User::find($republic->user_id);
 
-          /*
-           * Relationship Many to Many
-           * User favorites Republic
-           */
+          //User favorites Republic n:n
           $user->favorites()->attach($republic);
-      }
-  }
+        });
+    }
 }
