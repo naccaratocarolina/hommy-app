@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'favoritas',
     loadChildren: () => import('./Pages/favoritas/favoritas.module').then( m => m.FavoritasPageModule)
   },
+  {
+    path: 'home2',
+    loadChildren: () => import('./home2/home2.module').then( m => m.Home2PageModule)
+  },
 ];
 
 @NgModule({
