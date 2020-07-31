@@ -17,7 +17,7 @@ export class Home2Page implements OnInit {
 
   listAllRepublics() {
     this.searchService.getListRepublic().subscribe((res) => {
-      this.republicsArray = res;
+      this.republicsArray = res[0];
       console.log(this.republicsArray);
     });
   }
