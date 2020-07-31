@@ -41,19 +41,60 @@
   <div class="categories">
     <div>
       <ion-title>Recomendados</ion-title>
-      <app-republic-scroll-bar></app-republic-scroll-bar>
-    </div>
-    <div>
-      <ion-title>Casas</ion-title>
-      <app-republic-scroll-bar></app-republic-scroll-bar>
-    </div>
-    <div>
-      <ion-title>Apartamentos</ion-title>
-      <app-republic-scroll-bar></app-republic-scroll-bar>
-    </div>
-    <div>
-      <ion-title>Quartos</ion-title>
-      <app-republic-scroll-bar></app-republic-scroll-bar>
+      <ion-slides>
+        <ion-slide *ngFor="let republic of arrayRepublics">
+          <ion-card>
+            <ion-label class="bold">{{ republic.title }}</ion-label>
+            <ion-slides class="slides" pager="true">
+              <ion-slide><img src="../../assets/republics/rep_1_1.png" alt="imagem de uma república"></ion-slide>
+              <ion-slide><img src="../../assets/republics/rep_1_2.png" alt="imagem de uma república"></ion-slide>
+              <ion-slide><img src="../../assets/republics/rep_1_3.png" alt="imagem de uma república"></ion-slide>
+            </ion-slides>
+            
+            <ion-grid>
+              <ion-row>Categoria</ion-row>
+              <ion-row>ENdereco</ion-row>
+              <ion-row>
+                <ion-col><ion-icon name="calculator"></ion-icon> xx footage m²</ion-col>
+                <ion-col><ion-icon name="bed"></ion-icon> xx quartos</ion-col>
+              </ion-row>
+              
+              <ion-row>
+                <ion-col><i class="fa fa-bath" aria-hidden="true"></i> xx banheiros</ion-col>
+                <ion-col><ion-icon name="paw"></ion-icon> xx</ion-col>
+              </ion-row>
+              
+              <ion-row>
+                <ion-col><ion-icon name="car"></ion-icon> xx</ion-col>
+                <ion-col><ion-icon name="cash-outline"></ion-icon> R$ xx</ion-col>
+              </ion-row>
+              
+              <ion-row>
+                <ion-col>
+                  <ion-button type="rent" (click)="toRent()">
+                    <ion-icon name="document-text-outline" *ngIf="!rent"></ion-icon>
+                    <ion-icon name="document-text" *ngIf="rent"></ion-icon>
+                  </ion-button>
+                </ion-col>
+                
+                <ion-col>
+                  <ion-button type="fav" (click)="toFav()">
+                    <ion-icon name="heart-outline" *ngIf="!fav"></ion-icon>
+                    <ion-icon name="heart" *ngIf="fav"></ion-icon>
+                  </ion-button>
+                </ion-col>
+                
+                <ion-col>
+                  <ion-button type="rate" (click)="toRate()">
+                    <ion-icon name="star-outline" *ngIf="!rate"></ion-icon>
+                    <ion-icon name="star" *ngIf="rate"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>  
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
     </div>
   </div>
 </ion-content>

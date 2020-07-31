@@ -21,4 +21,16 @@ export class Home2Page implements OnInit {
       console.log(this.republicsArray);
     });
   }
+
+  toRent() {
+   this.rent = !this.rent;
+  }
+
+  toFav() {
+   this.fav = !this.fav;
+  }
+
+  toRate() {
+   this.rate = !this.rate;
+  }
 }

@@ -6,58 +6,53 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<div class="scroll-div">
-  <div class="card" *ngFor="let Republica of arrayRepublicas">
-    <ion-card>
-      <ion-label class="bold">{{ Republica.name }}</ion-label>
-      <ion-slides class="slides" pager="true">
-        <ion-slide><img src="../../assets/republics/{{Republica.image_1}}" alt="imagem de uma república"></ion-slide>
-        <ion-slide><img src="../../assets/republics/{{Republica.image_2}}" alt="imagem de uma república"></ion-slide>
-        <ion-slide><img src="../../assets/republics/{{Republica.image_3}}" alt="imagem de uma república"></ion-slide>
-      </ion-slides>
+<ion-card>
+  <ion-label class="bold">Titulo</ion-label>
+  <ion-slides class="slides" pager="true">
+    <ion-slide><img src="../../assets/republics/rep_1_1.png" alt="imagem de uma república"></ion-slide>
+    <ion-slide><img src="../../assets/republics/rep_1_2.png" alt="imagem de uma república"></ion-slide>
+    <ion-slide><img src="../../assets/republics/rep_1_3.png" alt="imagem de uma república"></ion-slide>
+  </ion-slides>
+  
+  <ion-grid>
+    <ion-row>Categoria</ion-row>
+    <ion-row>ENdereco</ion-row>
+    <ion-row>
+      <ion-col><ion-icon name="calculator"></ion-icon> xx footage m²</ion-col>
+      <ion-col><ion-icon name="bed"></ion-icon> xx quartos</ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col><i class="fa fa-bath" aria-hidden="true"></i> xx} banheiros</ion-col>
+      <ion-col><ion-icon name="paw"></ion-icon> xx</ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col><ion-icon name="car"></ion-icon> xx</ion-col>
+      <ion-col><ion-icon name="cash-outline"></ion-icon> R$ xx</ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col>
+        <ion-button type="rent" (click)="toRent()">
+          <ion-icon name="document-text-outline" *ngIf="!rent"></ion-icon>
+          <ion-icon name="document-text" *ngIf="rent"></ion-icon>
+        </ion-button>
+      </ion-col>
       
-      <ion-grid>
-        <ion-row>{{ Republica.category }}</ion-row>
-        <ion-row>{{ Republica.street }}</ion-row>
-        <ion-row>{{ Republica.neighborhood }}, {{ Republica.city }}</ion-row>
-        <ion-row>
-          <ion-col><ion-icon name="calculator"></ion-icon> {{ Republica.footage }} m²</ion-col>
-          <ion-col><ion-icon name="bed"></ion-icon> {{ Republica.number_bed }} quartos</ion-col>
-        </ion-row>
-        
-        <ion-row>
-          <ion-col><i class="fa fa-bath" aria-hidden="true"></i> {{ Republica.number_bed }} banheiros</ion-col>
-          <ion-col><ion-icon name="paw"></ion-icon> {{ Republica.animals }}</ion-col>
-        </ion-row>
-        
-        <ion-row>
-          <ion-col><ion-icon name="car"></ion-icon> {{ Republica.parking }}</ion-col>
-          <ion-col><ion-icon name="cash-outline"></ion-icon> R$ {{ Republica.rental_per_month }}</ion-col>
-        </ion-row>
-        
-        <ion-row>
-          <ion-col>
-            <ion-button type="rent" (click)="toRent()">
-              <ion-icon name="document-text-outline" *ngIf="!rent"></ion-icon>
-              <ion-icon name="document-text" *ngIf="rent"></ion-icon>
-            </ion-button>
-          </ion-col>
-          
-          <ion-col>
-            <ion-button type="fav" (click)="toFav()">
-              <ion-icon name="heart-outline" *ngIf="!fav"></ion-icon>
-              <ion-icon name="heart" *ngIf="fav"></ion-icon>
-            </ion-button>
-          </ion-col>
-          
-          <ion-col>
-            <ion-button type="rate" (click)="toRate()">
-              <ion-icon name="star-outline" *ngIf="!rate"></ion-icon>
-              <ion-icon name="star" *ngIf="rate"></ion-icon>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>  
-    </ion-card>
-  </div>
-</div>
+      <ion-col>
+        <ion-button type="fav" (click)="toFav()">
+          <ion-icon name="heart-outline" *ngIf="!fav"></ion-icon>
+          <ion-icon name="heart" *ngIf="fav"></ion-icon>
+        </ion-button>
+      </ion-col>
+      
+      <ion-col>
+        <ion-button type="rate" (click)="toRate()">
+          <ion-icon name="star-outline" *ngIf="!rate"></ion-icon>
+          <ion-icon name="star" *ngIf="rate"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+</ion-card>

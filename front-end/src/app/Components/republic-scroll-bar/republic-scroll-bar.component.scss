@@ -2,38 +2,19 @@
   font-family: Roboto Condensed Regular;
 }
 
-.scroll-div {
-  height: 52vh;
-  background-color: transparent;
-  overflow-x: scroll; //permite o scroll horizontal
-  overflow-y: hidden; //bloqueia o scroll vertical
-  white-space: nowrap;
-}
-
-.scroll-div::-webkit-scrollbar { //remove a scrollbar do scroll horizontal
-  display: none;
-}
-
-.card {
-  display: inline-block;
-  height: 100%;
+ion-card {
+  margin: 0;
   padding: 1vh;
-  background-color: inherit;
-
-  ion-card {
-    margin: 0;
-    padding: 1vh;
-    height: inherit;
-    width: 60vw;
-    height: 50vh;
-    padding: 2vh;
-    --background: var(--ion-color-secondary); //creme
-    color: black;
-    font-size: 1em;
+  height: inherit;
+  width: 60vw;
+  height: 50vh;
+  padding: 2vh;
+  --background: var(--ion-color-secondary); //creme
+  color: black;
+  font-size: 1em;
   }
 
-  ion-label {
-    font-family: Roboto Condensed Bold;
-    font-size: 1.4em;
-  }
+ion-label {
+  font-family: Roboto Condensed Bold;
+  font-size: 1.4em;
 }
