@@ -67,9 +67,6 @@ class Republic extends Model {
 
           $this->title = $request->title;
           $this->address = $request->address;
-          $this->number = $request->number;
-          $this->neighborhood = $request->neighborhood;
-          $this->city = $request->city;
           $this->image = $request->image;
           $this->category = $request->category;
           $this->rental_per_month = $request->rental_per_month;
