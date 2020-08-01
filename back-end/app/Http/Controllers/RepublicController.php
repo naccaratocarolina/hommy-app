@@ -103,8 +103,20 @@ class RepublicController extends Controller {
       * Busca com filtro para encontrar republicas usando queries do Eloquent
       *
       */
-     public function searchRepublic(Request $request) {
+     public function filterRepublic(Request $request) {
+       $republic = Republic::query();
 
+       if($request->has('title')) {
+         $republic->where('title', 'LIKE', '%' . $request->input('title') . '%');
+       }
+
+       if($request->has('address')) {
+         $republic->where('address', 'LIKE', '%' . $request->input('address') . '%');
+       }
+
+       $query = $republic->orderBy('title', 'asc')->get();
+
+       return response()->json($query);
      }
 
      /*
