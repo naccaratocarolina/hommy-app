@@ -99,6 +99,22 @@ class RepublicController extends Controller {
        return response()->json(['Republica deletada com sucesso!']);
      }
 
+     /*
+      * Busca com filtro para encontrar republicas usando queries do Eloquent
+      *
+      */
+     public function searchRepublic(Request $request) {
+
+     }
+
+     /*
+      * Retorna todas as republicas que foram soft deleted
+      */
+      public function findSoftDeletes() {
+        $republics = Republic::onlyTrashed()->get();
+        return response()->json($republics);
+      }
+
 /*
   //user creates/announce a new republic (create relationship between user & republic)
   public function userAnnounceRepublic($id, $user_id) {

@@ -5,11 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Requests\RepublicRequest;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Users;
 use App\Comments;
 
 class Republic extends Model {
+    //Soft Delete
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
+
     /*
      * Relationship One to One
      * User rents Republic

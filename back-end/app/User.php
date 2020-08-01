@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\CommentRequest;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Comment;
 use App\Republic;
@@ -16,6 +17,10 @@ use App\Republic;
 class User extends Authenticatable {
     use Notifiable;
     use HasApiTokens;
+    
+    //Soft Delete
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 
     /*
      * Relationship One to One

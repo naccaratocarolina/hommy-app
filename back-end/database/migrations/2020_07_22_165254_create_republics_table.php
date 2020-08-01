@@ -27,6 +27,7 @@ class CreateRepublicsTable extends Migration
             $table->boolean('animals')->nullable();
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
 

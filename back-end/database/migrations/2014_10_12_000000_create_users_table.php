@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->float('payment')->nullable();
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
