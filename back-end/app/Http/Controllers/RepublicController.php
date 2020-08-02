@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\RepublicRequest;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Http\Resources\Republics as RepublicResource;
 
 use App\User;
 use App\Republic;
@@ -114,9 +116,16 @@ class RepublicController extends Controller {
          $republic->where('address', 'LIKE', '%' . $request->input('address') . '%');
        }
 
-       $query = $republic->orderBy('title', 'asc')->get();
+       $query = $republic->orderBy('title', 'asc')->paginate(10);
+       $aux = RepublicResource::collection($query);
 
-       return response()->json($query);
+       return response()->json($aux);
+     }
+
+     public function filterCategory(Request $request, $type) {
+       $republics = Republic::with('category')->get();
+
+
      }
 
      /*

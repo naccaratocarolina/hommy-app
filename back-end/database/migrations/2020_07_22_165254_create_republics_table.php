@@ -17,7 +17,9 @@ class CreateRepublicsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('address');
-            $table->string('image')->nullable();
+            $table->string('image_1')->nullable();
+            $table->string('image_2')->nullable();
+            $table->string('image_3')->nullable();
             $table->string('category')->nullable();
             $table->float('rental_per_month');
             $table->float('footage');

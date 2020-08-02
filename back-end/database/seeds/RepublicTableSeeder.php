@@ -14,7 +14,7 @@ class RepublicTableSeeder extends Seeder
      * @return void
      */
     public function run() {
-        factory(Republic::class, 12)->create()->each(function ($republic) {
+        factory(Republic::class, 50)->create()->each(function ($republic) {
           $comments = factory(Comment::class, 2)->make();
           $user = factory(User::class)->make();
 

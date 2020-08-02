@@ -72,7 +72,9 @@ class Republic extends Model {
 
           $this->title = $request->title;
           $this->address = $request->address;
-          $this->image = $request->image;
+          $this->image_1 = $request->image_1;
+          $this->image_2 = $request->image_1;
+          $this->image_3 = $request->image_1;
           $this->category = $request->category;
           $this->rental_per_month = $request->rental_per_month;
           $this->footage = $request->footage;
@@ -92,7 +94,13 @@ class Republic extends Model {
          if($request->address){
           $this->address = $request->address;
          }
-         if($request->image){
+         if($request->image_1){
+           $this->image = $request->image;
+         }
+         if($request->image_2){
+           $this->image = $request->image;
+         }
+         if($request->image_3){
            $this->image = $request->image;
          }
          if($request->category){
