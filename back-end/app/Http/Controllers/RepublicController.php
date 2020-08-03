@@ -14,6 +14,7 @@ use App\Http\Resources\Republics as RepublicResource;
 
 use App\User;
 use App\Republic;
+use App\Comment;
 
 class RepublicController extends Controller {
   /*
@@ -138,8 +139,7 @@ class RepublicController extends Controller {
         return response()->json($republics);
       }
 
-      public function commentsCounter(Request $request) {
-        $id = $request->id;
+      public function commentsCounter($id) {
         $count = Comment::with('republic')->where('republic_id', $id)->count();
         return response()->json($count);
       }
