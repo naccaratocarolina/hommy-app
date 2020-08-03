@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Resources;
-
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class Comments extends ResourceCollection
@@ -15,6 +14,7 @@ class Comments extends ResourceCollection
     public function toArray($request)
     {
       return [
+        'id' => $this->id,
         'text' => $this->text
       ];
     }

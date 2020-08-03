@@ -10,6 +10,7 @@ export class Home2Page implements OnInit {
   public rent: boolean = false;
   public fav: boolean = false;
   public rate: boolean = false;
+
   public republicsArray = [];
 
   constructor(public searchService: SearchService) { }

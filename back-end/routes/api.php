@@ -45,6 +45,7 @@ Route::get('listFavorites/{id}','RepublicController@listFavorites');
 Route::get('tenant/{id}','RepublicController@tenant');
 Route::get('findSoftDeletes','RepublicController@findSoftDeletes');
 Route::get('filterRepublic','RepublicController@filterRepublic');
+Route::get('commentCounter', 'RepublicController@commentCounter');
 Route::post('createRepublic','RepublicController@createRepublic');
 Route::post('userAnnounceRepublic/{id}/{user_id}','RepublicController@userAnnounceRepublic');
 Route::post('owns/{republic_id}','RepublicController@owns');

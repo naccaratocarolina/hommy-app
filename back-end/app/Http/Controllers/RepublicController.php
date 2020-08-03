@@ -7,7 +7,9 @@ use App\Http\Requests\RepublicRequest;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\Resources;
 use App\Http\Resources\Republics as RepublicResource;
 
 use App\User;
@@ -106,26 +108,26 @@ class RepublicController extends Controller {
       *
       */
      public function filterRepublic(Request $request) {
-       $republic = Republic::query();
+       $query = Republic::query();
 
        if($request->has('title')) {
-         $republic->where('title', 'LIKE', '%' . $request->input('title') . '%');
+         $query->where('title', 'LIKE', '%' . $request->input('title') . '%');
        }
 
        if($request->has('address')) {
-         $republic->where('address', 'LIKE', '%' . $request->input('address') . '%');
+         $query->where('address', 'LIKE', '%' . $request->input('address') . '%');
        }
 
-       $query = $republic->orderBy('title', 'asc')->paginate(10);
-       $aux = RepublicResource::collection($query);
+       if($request->has('comments')) {
+         $query = Comments::with(['republic' => function($q) {
+           $q->where('text', 'LIKE', '%' . $request->input('text') . '%');
+         }])->get();
+       }
 
-       return response()->json($aux);
-     }
+       $query = $query->paginate(10);
+       $republicResource = RepublicResource::collection($query->items());
 
-     public function filterCategory(Request $request, $type) {
-       $republics = Republic::with('category')->get();
-
-
+       return response()->json($query);
      }
 
      /*
