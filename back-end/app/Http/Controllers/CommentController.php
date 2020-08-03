@@ -15,10 +15,23 @@ class CommentController extends Controller {
    * User post Comment
    * A Comment is made by 1 User
    */
+   /*
    public function post($id) {
      $comment = Comment::findOrFail($id);
      $comment->user_id = $user_id;
      $this->save();
+   }*/
+
+   public function post(CommentRequest $request) {
+     $comment = new Comment;
+     $comment->name = $request->name;
+     $comment->user_id = $request->user_id;
+     $comment->republic_id = $request->republic_id;
+     $comment->text = $request->text;
+
+     $comment->save();
+
+     return response()->json($comment);
    }
 
    public function postedBy($id) {

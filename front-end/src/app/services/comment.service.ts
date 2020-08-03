@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
+  //URL da api
+  apiUrl:string = 'http://localhost:8000/api/'
 
-  constructor() { }
+  constructor( public http: HttpClient ) { }
+
+  getListComment(): Observable<any> {
+    return this.http.get(this.apiUrl + 'listComment');
+  }
 }
