@@ -15,7 +15,7 @@ export class CommentService {
     return this.http.get(this.apiUrl + 'listComment');
   }
 
-  getCommentByRepublic(): Observable<any> {
+  getCommentByRepublic(republic_id): Observable<any> {
     return this.http.get(this.apiUrl + 'listComments/' + republic_id);
   }
 

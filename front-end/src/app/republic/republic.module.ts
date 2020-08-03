@@ -8,12 +8,15 @@ import { RepublicPageRoutingModule } from './republic-routing.module';
 
 import { RepublicPage } from './republic.page';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RepublicPageRoutingModule
+    RepublicPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [RepublicPage]
 })
