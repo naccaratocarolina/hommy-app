@@ -119,8 +119,8 @@ class RepublicController extends Controller {
        }
 
        if($request->has('comments')) {
-         $query = Comments::with(['republic' => function($q) {
-           $q->where('text', 'LIKE', '%' . $request->input('text') . '%');
+         $query = Republic::with(['comments' => function($q) {
+           $q->where('text', 'LIKE', '%');
          }])->get();
        }
 
@@ -136,6 +136,15 @@ class RepublicController extends Controller {
       public function findSoftDeletes() {
         $republics = Republic::onlyTrashed()->get();
         return response()->json($republics);
+      }
+
+      public function commentsCounter(Request $request) {
+        $comments = Republic::withCount('comments')->get();
+
+        foreach ($comments as $comment) {
+            $comment->comments_count;
+        }
+        echo $comments[0]->comments_count;
       }
 
 /*
