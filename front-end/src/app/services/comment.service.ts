@@ -14,4 +14,20 @@ export class CommentService {
   getListComment(): Observable<any> {
     return this.http.get(this.apiUrl + 'listComment');
   }
+
+  getCommentByRepublic(): Observable<any> {
+    return this.http.get(this.apiUrl + 'listComments/' + republic_id);
+  }
+
+  postAddComment(form): Observable<any>{
+    return(this.http.post(this.apiUrl + 'post', form));
+  }
+
+  putUpdateComment() {
+    return this.http.put(this.apiUrl + 'updateComment/' + id, form);
+  }
+
+  delDeleteComment(id:number): Observable<any> {
+    return this.http.delete(this.apiUrl + 'deleteComment/' + id);
+  }
 }
