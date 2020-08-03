@@ -139,12 +139,9 @@ class RepublicController extends Controller {
       }
 
       public function commentsCounter(Request $request) {
-        $comments = Republic::withCount('comments')->get();
-
-        foreach ($comments as $comment) {
-            $comment->comments_count;
-        }
-        echo $comments[0]->comments_count;
+        $id = $request->id;
+        $count = Comment::with('republic')->where('republic_id', $id)->count();
+        return response()->json($count);
       }
 
 /*
