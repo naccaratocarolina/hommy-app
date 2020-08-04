@@ -43,7 +43,7 @@
         <ion-title>Recomendados</ion-title>
         <div class="scroll-div">
           <div class="card" *ngFor="let republic of republicsArray">
-            <ion-card>
+            <ion-card (click) = redirectRepublic(republic.id)>
                 <ion-label> {{ republic.title }} </ion-label>
                 <ion-slides class="slides" pager="true">
                   <ion-slide><img src="../assets/republics/rep_1_1.png" alt="imagem de uma república"></ion-slide>

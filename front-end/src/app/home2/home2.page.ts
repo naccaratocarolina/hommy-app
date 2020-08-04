@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 import { SearchService } from '../services/search.service';
 
 @Component({
@@ -12,8 +14,9 @@ export class Home2Page implements OnInit {
   public rate: boolean = false;
 
   public republicsArray = [];
+  public select = -1;
 
-  constructor(public searchService: SearchService) { }
+  constructor( public searchService: SearchService, private router: Router ) { }
 
   ngOnInit() {
     this.listAllRepublics();
@@ -24,6 +27,11 @@ export class Home2Page implements OnInit {
       this.republicsArray = res[0];
       console.log(this.republicsArray);
     });
+  }
+
+  public redirectRepublic(id) {
+    localStorage.setItem('republic_id', id);
+    this.router.navigate(['/republic', {republic_id: id}]);
   }
 
   toRent() {

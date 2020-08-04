@@ -12,8 +12,8 @@ import { CommentService } from '../services/comment.service';
 export class RepublicPage implements OnInit {
   //array de comments
   commentsArray = [];
-  //var que vai armazenar o republic_id
-  republic_id: number;
+  //pega o republic_id do localStorage
+  republic_id = parseInt(localStorage.getItem('republic_id'));
   //formulario
   comment_form: FormGroup;
 
@@ -31,6 +31,32 @@ export class RepublicPage implements OnInit {
     this.commentService.getListComment().subscribe((res) => {
       this.commentsArray = res[0];
       console.log(this.commentsArray);
+    });
+  }
+
+  addComment(comment_form) {
+    comment_form.value.republic_id = this.id_republic;
+    console.log(comment_form);
+    console.log(comment_form.value);
+
+    this.commentService.postAddComment(comment_form.value).subscribe((res) => {
+      console.log(res); //printa o objeto criado
+      this.commentByRepublic(this.republic_id); //printa todas os comentarios da republica
+    });
+  }
+
+  commentByRepublic(republic_id) {
+    this.commentService.getCommentByRepublic(republic_id).subscribe((res) => {
+      console.log(res);
+      this.commentsArray = res;
+      console.log(this.commentsArray);
+    });
+  }
+
+  deleteComment(id) {
+    this.commentService.delDeleteComment(id).subscribe((res) => {
+      console.log(res); //mensagem de comentario deletado com sucesso printado
+      this.commentByRepublic(this.republic_id); //printa o objeto deletado
     });
   }
 }
