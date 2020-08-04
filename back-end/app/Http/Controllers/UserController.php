@@ -14,6 +14,9 @@ use App\Republic;
 use App\Comment;
 
 class UserController extends Controller {
+  public function construct() {
+    $this->middleware('delete');
+  }
   /*
    * Relationship One to One
    * User rents Republic

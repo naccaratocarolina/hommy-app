@@ -51,7 +51,7 @@ Route::post('createRepublic','RepublicController@createRepublic');
 Route::post('userAnnounceRepublic/{id}/{user_id}','RepublicController@userAnnounceRepublic');
 Route::post('owns/{republic_id}','RepublicController@owns');
 Route::put('updateRepublic/{id}','RepublicController@updateRepublic');
-Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic');
+//Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic');
 Route::delete('userDeleteRepublic/{id}/{user_id}','RepublicController@userDeleteRepublic');
 
 //CommentController
@@ -72,6 +72,7 @@ Route::delete('deleteComment/{id}','CommentController@deleteComment');
 Route::post('register', 'API\PassportController@register');
 Route::post('login', 'API\PassportController@login');
 Route::group(['middleware' => 'auth:api'], function() {
+  Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic')->middleware('delete');
   Route::post('logout', 'API\PassportController@logout');
   Route::post('getDetails', 'API\PassportController@getDetails');
 });
