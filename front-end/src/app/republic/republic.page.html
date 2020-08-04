@@ -10,13 +10,13 @@
     <form *ngIf="!canEdit" (ngSubmit)="addComment(comment_form)" [formGroup]="comment_form">
       <h2>Faca um comentário</h2>
       <ion-textarea formControlName="text" class="comment"></ion-textarea>
-      <ion-button [disabled]="!comment_form.valid" type='submit'>Enviar</ion-button>
+      <ion-button class="submit_buttons" [disabled]="!comment_form.valid" type='submit'>Enviar</ion-button>
     </form>
     
     <form *ngIf="canEdit" (ngSubmit)="updateComment(comment_edit_form)" [formGroup]="comment_edit_form">
       <h2>Faca um comentário</h2>
       <ion-textarea formControlName="text" class="comment" placeholder="{{ text_edit }}"></ion-textarea>
-      <ion-button [disabled]="!comment_edit_form.valid" type='edit'>Editar</ion-button>
+      <ion-button class="submit_buttons" [disabled]="!comment_edit_form.valid" type='edit'>Editar</ion-button>
     </form>
     
     <ion-slides>
