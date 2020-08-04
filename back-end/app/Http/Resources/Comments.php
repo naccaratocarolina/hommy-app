@@ -15,7 +15,9 @@ class Comments extends ResourceCollection
     {
       return [
         'id' => $this->id,
-        'text' => $this->text
+        'text' => $this->text,
+        'user_id' => $this->user_id,
+        '$republic_id' => $this->$republic_id
       ];
     }
 }

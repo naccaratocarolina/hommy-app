@@ -13,11 +13,15 @@ export class RepublicPage implements OnInit {
   //array de comments
   commentsArray = [];
   //pega o republic_id do localStorage
-  republic_id = parseInt(localStorage.getItem('republic_id'));
+  republic_id:number;
   //formulario
   comment_form: FormGroup;
+  //informacoes que vem do back
+  republic:any;
+  comments = [];
 
   constructor( public commentService: CommentService, public formbuilder: FormBuilder ) {
+    this.republic_id = JSON.parse(localStorage.getItem('republic')).id;
     this.comment_form = this.formbuilder.group({
     			text: ['', [Validators.required]]
     	});
@@ -35,12 +39,13 @@ export class RepublicPage implements OnInit {
   }
 
   addComment(comment_form) {
-    comment_form.value.republic_id = this.id_republic;
+    comment_form.value.republic_id = this.republic_id;
     console.log(comment_form);
     console.log(comment_form.value);
 
     this.commentService.postAddComment(comment_form.value).subscribe((res) => {
       console.log(res); //printa o objeto criado
+      this.comment_form.reset(); //reseta o form
       this.commentByRepublic(this.republic_id); //printa todas os comentarios da republica
     });
   }
@@ -48,8 +53,10 @@ export class RepublicPage implements OnInit {
   commentByRepublic(republic_id) {
     this.commentService.getCommentByRepublic(republic_id).subscribe((res) => {
       console.log(res);
-      this.commentsArray = res;
-      console.log(this.commentsArray);
+      this.republic = res.republic;
+      console.log(this.republic);
+      this.comments = res.comments;
+      console.log(this.comments);
     });
   }
 

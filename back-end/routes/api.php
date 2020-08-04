@@ -60,7 +60,7 @@ Route::get('ownedBy/{id}','CommentController@ownedBy');
 Route::get('findComment/{id}','CommentController@findComment');
 Route::get('listComment','CommentController@listComment');
 Route::post('createComment','CommentController@createComment');
-Route::post('post/{id}','CommentController@post');
+Route::post('post','CommentController@post');
 Route::post('postedBy/{id}','CommentController@postedBy');
 Route::put('userUpdateComment/{id}/{user_id}','CommentController@userUpdateComment');
 Route::put('updateComment/{id}','CommentController@updateComment');

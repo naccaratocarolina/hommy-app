@@ -22,15 +22,12 @@ class CommentController extends Controller {
      $this->save();
    }*/
 
-   public function post(CommentRequest $request) {
+   public function post(Request $request) {
      $comment = new Comment;
-     $comment->name = $request->name;
+     $comment->text = $request->text;
      $comment->user_id = $request->user_id;
      $comment->republic_id = $request->republic_id;
-     $comment->text = $request->text;
-
      $comment->save();
-
      return response()->json($comment);
    }
 
@@ -111,7 +108,7 @@ class CommentController extends Controller {
     public function createComment(CommentRequest $request) {
       $comment = new Comment;
       $comment->createComment($request);
-      return response()->json([$comment, 'Comentario criado com sucesso!']);
+      return response()->json($comment);
     }
 
     //find an especific comment by id

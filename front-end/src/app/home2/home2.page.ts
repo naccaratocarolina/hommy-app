@@ -14,7 +14,6 @@ export class Home2Page implements OnInit {
   public rate: boolean = false;
 
   public republicsArray = [];
-  public select = -1;
 
   constructor( public searchService: SearchService, private router: Router ) { }
 
@@ -29,9 +28,9 @@ export class Home2Page implements OnInit {
     });
   }
 
-  public redirectRepublic(id) {
-    localStorage.setItem('republic_id', id);
-    this.router.navigate(['/republic', {republic_id: id}]);
+  public redirectRepublic(republic) {
+    localStorage.setItem('republic',JSON.stringify(republic));
+    window.location.replace('/republic');
   }
 
   toRent() {

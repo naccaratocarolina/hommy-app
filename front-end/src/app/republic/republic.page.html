@@ -1,9 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>republic</ion-title>
+    <ion-title>República</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div>
+    <img src="../assets/republics/rep_1_1.png" alt="imagem de uma república">
+    <h2>Faca um comentário</h2>
+    <form (ngSubmit)="addComment(comment_form)" [formGroup]="comment_form">
+      <ion-textarea formControlName="text" class="comment"></ion-textarea>
+      <ion-button [disabled]="!comment_form.valid" type='submit'>Enviar</ion-button>
+    </form>
+    
+    <ion-slides>
+      <ion-slide *ngFor="let comment of comments">
+        <ion-grid>
+          <ion-row class="text">{{ comment.text }}</ion-row>
+          <ion-row class="actions">
+            <ion-col><ion-button (click)="deleteComment(comment.id)"><ion-icon name="trash" ></ion-icon></ion-button></ion-col>
+            <ion-col><ion-button (click)="deleteComment(comment.id)"><ion-icon name="create" ></ion-icon></ion-button></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+    </ion-slides>
+  </div>
 </ion-content>

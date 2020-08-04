@@ -60,8 +60,11 @@ class RepublicController extends Controller {
      }
 
      public function listComments($id) {
+       $response = [];
        $republic = Republic::findOrFail($id);
-       return response()->json($republic->comments);
+       $comments = Republic::findOrFail($id)->comments()->get();
+       array_push( $response, ["republic" => $republic, "comments" => $comments]);
+       return response()->json($response[0]);
      }
 
      /*
