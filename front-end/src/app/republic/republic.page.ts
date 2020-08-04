@@ -16,15 +16,26 @@ export class RepublicPage implements OnInit {
   republic_id:number;
   //formulario
   comment_form: FormGroup;
+  comment_edit_form: FormGroup;
   //informacoes que vem do back
   republic:any;
   comments = [];
+  //
+  text_edit:string = '';
+  //var que vai armazenar o id do comment
+  comment_id:number;
+  //var de controle do form
+  canEdit:boolean = false;
 
   constructor( public commentService: CommentService, public formbuilder: FormBuilder ) {
     this.republic_id = JSON.parse(localStorage.getItem('republic')).id;
     this.comment_form = this.formbuilder.group({
-    			text: ['', [Validators.required]]
+      text: ['', [Validators.required]]
     	});
+
+    this.comment_edit_form = this.formbuilder.group({
+      text: ['', [Validators.required]]
+    });
   }
 
   ngOnInit() {
@@ -53,11 +64,36 @@ export class RepublicPage implements OnInit {
   commentByRepublic(republic_id) {
     this.commentService.getCommentByRepublic(republic_id).subscribe((res) => {
       console.log(res);
-      this.republic = res.republic;
+      this.republic = res.republic; //printa a republica dona do comentario
       console.log(this.republic);
-      this.comments = res.comments;
+      this.comments = res.comments; //printa um array de comentarios da republica
       console.log(this.comments);
     });
+  }
+
+  updateComment(comment_edit_form) {
+    console.log(comment_edit_form);
+    console.log(comment_edit_form.value);
+    this.canEdit = false;
+    this.commentService.putUpdateComment(this.comment_id, comment_edit_form.value).subscribe((res) => {
+      console.log(res);
+      this.text_edit = '';
+      this.comment_edit_form.reset();
+      this.commentByRepublic(this.republic_id);
+    });
+  }
+
+  getCommentId(id) {
+    console.log(id);
+    this.comment_id = id;
+    console.log(this.comment_id);
+    for(let comment of this.comments) {
+      if(comment.id == id) { //seleciona o comment com o id dado
+        this.text_edit = comment.text;
+      }
+    }
+    //muda inverte o valor da var de controle
+    this.canEdit = true;
   }
 
   deleteComment(id) {

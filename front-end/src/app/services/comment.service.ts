@@ -23,7 +23,7 @@ export class CommentService {
     return(this.http.post(this.apiUrl + 'post', form));
   }
 
-  putUpdateComment() {
+  putUpdateComment(id, form): Observable<any> {
     return this.http.put(this.apiUrl + 'updateComment/' + id, form);
   }
 

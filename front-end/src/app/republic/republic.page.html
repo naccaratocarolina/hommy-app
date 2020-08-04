@@ -7,10 +7,16 @@
 <ion-content>
   <div>
     <img src="../assets/republics/rep_1_1.png" alt="imagem de uma república">
-    <h2>Faca um comentário</h2>
-    <form (ngSubmit)="addComment(comment_form)" [formGroup]="comment_form">
+    <form *ngIf="!canEdit" (ngSubmit)="addComment(comment_form)" [formGroup]="comment_form">
+      <h2>Faca um comentário</h2>
       <ion-textarea formControlName="text" class="comment"></ion-textarea>
       <ion-button [disabled]="!comment_form.valid" type='submit'>Enviar</ion-button>
+    </form>
+    
+    <form *ngIf="canEdit" (ngSubmit)="updateComment(comment_edit_form)" [formGroup]="comment_edit_form">
+      <h2>Faca um comentário</h2>
+      <ion-textarea formControlName="text" class="comment" placeholder="{{ text_edit }}"></ion-textarea>
+      <ion-button [disabled]="!comment_edit_form.valid" type='edit'>Editar</ion-button>
     </form>
     
     <ion-slides>
@@ -19,7 +25,7 @@
           <ion-row class="text">{{ comment.text }}</ion-row>
           <ion-row class="actions">
             <ion-col><ion-button (click)="deleteComment(comment.id)"><ion-icon name="trash" ></ion-icon></ion-button></ion-col>
-            <ion-col><ion-button (click)="deleteComment(comment.id)"><ion-icon name="create" ></ion-icon></ion-button></ion-col>
+            <ion-col><ion-button (click)="getCommentId(comment.id)"><ion-icon name="create" ></ion-icon></ion-button></ion-col>
           </ion-row>
         </ion-grid>
       </ion-slide>

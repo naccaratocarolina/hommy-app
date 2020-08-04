@@ -27,6 +27,7 @@ class CommentController extends Controller {
      $comment->text = $request->text;
      $comment->user_id = $request->user_id;
      $comment->republic_id = $request->republic_id;
+     //+ achar uma forma de colocar o name aqui
      $comment->save();
      return response()->json($comment);
    }
