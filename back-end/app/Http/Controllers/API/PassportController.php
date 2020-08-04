@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest as UserRequest;
 use Illuminate\Support\Facades\Validator;
-
+use App\Notifications\confirmaCadastro;
 use App\User;
+
 use Auth;
 use DB;
 
@@ -16,6 +17,7 @@ class PassportController extends Controller {
       $new_user = new User;
       $new_user->createUser($request);
       $success['token'] = $new_user->createToken('MyApp')->accessToken;
+      $new_user->notify(new confirmaCadastro());
       return response()->json(['success' => $success, 'user' => $new_user], 200);
     }
 
