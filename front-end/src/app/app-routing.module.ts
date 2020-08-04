@@ -8,20 +8,16 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./Pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'favoritas',
-    loadChildren: () => import('./Pages/favoritas/favoritas.module').then( m => m.FavoritasPageModule)
-  },
-  {
     path: 'home2',
     loadChildren: () => import('./home2/home2.module').then( m => m.Home2PageModule)
   },
   {
     path: 'republic',
     loadChildren: () => import('./republic/republic.module').then( m => m.RepublicPageModule)
+  },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
   },
 ];
 

@@ -46,9 +46,9 @@
             <ion-card (click) = redirectRepublic(republic)>
                 <ion-label> {{ republic.title }} </ion-label>
                 <ion-slides class="slides" pager="true">
-                  <ion-slide><img src="../assets/republics/rep_1_1.png" alt="imagem de uma república"></ion-slide>
-                  <ion-slide><img src="../assets/republics/rep_1_2.png" alt="imagem de uma república"></ion-slide>
-                  <ion-slide><img src="../assets/republics/rep_1_3.png" alt="imagem de uma república"></ion-slide>
+                  <ion-slide><img src="{{republic.image_1}}" alt="imagem de uma república"></ion-slide>
+                  <ion-slide><img src="{{republic.image_2}}" alt="imagem de uma república"></ion-slide>
+                  <ion-slide><img src="{{republic.image_3}}" alt="imagem de uma república"></ion-slide>
                 </ion-slides>
                 
                 <ion-grid>
@@ -101,12 +101,12 @@
         <ion-title>Casas</ion-title>
         <div class="scroll-div">
           <div class="card" *ngFor="let republic of republicsArray">
-            <ion-card>
+            <ion-card (click) = redirectRepublic(republic)>
                 <ion-label> {{ republic.title }} </ion-label>
                 <ion-slides class="slides" pager="true">
-                  <ion-slide><img src="../assets/republics/rep_1_1.png" alt="imagem de uma república"></ion-slide>
-                  <ion-slide><img src="../assets/republics/rep_1_2.png" alt="imagem de uma república"></ion-slide>
-                  <ion-slide><img src="../assets/republics/rep_1_3.png" alt="imagem de uma república"></ion-slide>
+                  <ion-slide><img src="{{republic.image_1}}" alt="imagem de uma república"></ion-slide>
+                  <ion-slide><img src="{{republic.image_2}}" alt="imagem de uma república"></ion-slide>
+                  <ion-slide><img src="{{republic.image_3}}" alt="imagem de uma república"></ion-slide>
                 </ion-slides>
                 
                 <ion-grid>
@@ -159,12 +159,12 @@
         <ion-title>Apartamentos</ion-title>
         <div class="scroll-div">
           <div class="card" *ngFor="let republic of republicsArray">
-            <ion-card>
+            <ion-card (click) = redirectRepublic(republic)>
                 <ion-label> {{ republic.title }} </ion-label>
                 <ion-slides class="slides" pager="true">
-                  <ion-slide><img src="../assets/republics/rep_1_1.png" alt="imagem de uma república"></ion-slide>
-                  <ion-slide><img src="../assets/republics/rep_1_2.png" alt="imagem de uma república"></ion-slide>
-                  <ion-slide><img src="../assets/republics/rep_1_3.png" alt="imagem de uma república"></ion-slide>
+                  <ion-slide><img src="{{republic.image_1}}" alt="imagem de uma república"></ion-slide>
+                  <ion-slide><img src="{{republic.image_2}}" alt="imagem de uma república"></ion-slide>
+                  <ion-slide><img src="{{republic.image_3}}" alt="imagem de uma república"></ion-slide>
                 </ion-slides>
                 
                 <ion-grid>
@@ -218,12 +218,12 @@
       <ion-title>Quartos</ion-title>
       <div class="scroll-div">
         <div class="card" *ngFor="let republic of republicsArray">
-          <ion-card>
+          <ion-card (click) = redirectRepublic(republic)>
               <ion-label> {{ republic.title }} </ion-label>
               <ion-slides class="slides" pager="true">
-                <ion-slide><img src="../assets/republics/rep_1_1.png" alt="imagem de uma república"></ion-slide>
-                <ion-slide><img src="../assets/republics/rep_1_2.png" alt="imagem de uma república"></ion-slide>
-                <ion-slide><img src="../assets/republics/rep_1_3.png" alt="imagem de uma república"></ion-slide>
+                <ion-slide><img src="{{republic.image_1}}" alt="imagem de uma república"></ion-slide>
+                <ion-slide><img src="{{republic.image_2}}" alt="imagem de uma república"></ion-slide>
+                <ion-slide><img src="{{republic.image_3}}" alt="imagem de uma república"></ion-slide>
               </ion-slides>
               
               <ion-grid>

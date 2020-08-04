@@ -12,15 +12,15 @@ import { CommentService } from '../services/comment.service';
 export class RepublicPage implements OnInit {
   //array de comments
   commentsArray = [];
-  //pega o republic_id do localStorage
+  //var que vai armazenar o republic_id do json do localStorage
   republic_id:number;
-  //formulario
+  //variaveis form builder
   comment_form: FormGroup;
   comment_edit_form: FormGroup;
-  //informacoes que vem do back
-  republic:any;
-  comments = [];
-  //
+  //objetos do json retornado da funcao listComments do back-end
+  republic:any; //armazena a rep dona do comment
+  comments = []; //armazena um array de comments referente a republica
+  //nova variavel de texto para editar um comentario
   text_edit:string = '';
   //var que vai armazenar o id do comment
   comment_id:number;
@@ -28,7 +28,10 @@ export class RepublicPage implements OnInit {
   canEdit:boolean = false;
 
   constructor( public commentService: CommentService, public formbuilder: FormBuilder ) {
+    //pega o republic_id do localStorage
     this.republic_id = JSON.parse(localStorage.getItem('republic')).id;
+    
+    //inicializa os forms
     this.comment_form = this.formbuilder.group({
       text: ['', [Validators.required]]
     	});

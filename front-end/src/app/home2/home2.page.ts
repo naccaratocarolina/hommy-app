@@ -28,6 +28,7 @@ export class Home2Page implements OnInit {
     });
   }
 
+  //redireciona para a pagina da republica e guarda o json republic vindo do back no localStorage
   public redirectRepublic(republic) {
     localStorage.setItem('republic',JSON.stringify(republic));
     window.location.replace('/republic');

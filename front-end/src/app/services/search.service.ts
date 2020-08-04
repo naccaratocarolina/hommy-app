@@ -10,6 +10,7 @@ export class SearchService {
 
   constructor(public http:HttpClient) { }
 
+  //lista todas as republicas
   getListRepublic(): Observable<any> {
     return this.http.get(this.apiURL + 'listRepublic');
   }

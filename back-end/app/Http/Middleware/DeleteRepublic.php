@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
+use App\Republic;
 
 class DeleteRepublic
 {
@@ -14,12 +16,14 @@ class DeleteRepublic
      * @return mixed
      */
     public function handle($request, Closure $next) {
-      $user = User::Auth();
-      $republics = $user->republics;
-      foreach($republics as $user_republic) { //percorre o array de republicas do user
-        if($user_republic->id == $request) //verifica se o id da republica dada pertence ao user
-        $response = $next($request); //se sim, passa o request
-        return $response;
+      $user = Auth::user();
+      $republics = Republic::with('user')->where('user_id', $user->id)->where('id', $request->id)->first();
+
+      if($republics) {
+        return $next($request);
+      }
+      else {
+        return response()->json(['Vc nao tem permissao!']);
       }
     }
 }

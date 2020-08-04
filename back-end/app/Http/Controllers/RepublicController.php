@@ -146,39 +146,4 @@ class RepublicController extends Controller {
         $count = Comment::with('republic')->where('republic_id', $id)->count();
         return response()->json($count);
       }
-
-/*
-  //user creates/announce a new republic (create relationship between user & republic)
-  public function userAnnounceRepublic($id, $user_id) {
-    $republic = Republic::findOrFail($id);
-    $user = User::findOrFail($user_id);
-
-    $republic->user_id = $user_id;
-    $republic->save();
-
-    return response()->json([$republic, 'Relacao criada com sucesso!']);
-  }
-
-  //user deletes an existing republic (destroy relationship between user & republic)
-  public function userDeleteRepublic($id, $user_id) {
-    $republic = Republic::findOrFail($id);
-    $user = User::findOrFail($user_id);
-
-    $republic->user_id = NULL;
-    $republic->save();
-
-    return response()->json([$republic, 'Relacao deletada com sucesso!']);
-  }
-
-  public function tenant($id) { //locatario, quem aluga
-    $republic = Republic::findOrFail($id);
-    $tenants = $republic->tenantUser()->get();
-
-    return response()->json([$tenants, 'Locatarios localizados com sucesso!']);
-  }
-
-  public function owner($id) { //locador, dono da republica
-    $republic = Republic::findOrFail($id);
-    return response()->json([$republic->user, 'Dono da republica localizado com sucesso!']);
-  }*/
 }
