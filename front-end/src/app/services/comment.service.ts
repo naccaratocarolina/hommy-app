@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
-  //URL da api
-  apiUrl:string = 'http://localhost:8000/api/'
+  //rota do back-end
+  apiUrl: string = 'http://localhost:8000/api/';
+
+  //headers do programa
+  httpHeaders: object = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  }
 
   constructor( public http: HttpClient ) { }
 
@@ -23,16 +31,19 @@ export class CommentService {
 
   //adiciona um comentario
   postAddComment(form): Observable<any>{
-    return(this.http.post(this.apiUrl + 'post', form));
+    this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
+    return this.http.post(this.apiUrl + 'post', form, this.httpHeaders);
   }
 
   //edita um comentario ja existente
   putUpdateComment(id, form): Observable<any> {
-    return this.http.put(this.apiUrl + 'updateComment/' + id, form);
+    this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
+    return this.http.put(this.apiUrl + 'updateComment/' + id, form, this.httpHeaders);
   }
 
   //deleta um comentario ja existente
   delDeleteComment(id:number): Observable<any> {
-    return this.http.delete(this.apiUrl + 'deleteComment/' + id);
+    this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
+    return this.http.delete(this.apiUrl + 'deleteComment/' + id, this.httpHeaders);
   }
 }
