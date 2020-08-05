@@ -73,6 +73,7 @@ Route::post('register', 'API\PassportController@register');
 Route::post('login', 'API\PassportController@login');
 Route::group(['middleware' => 'auth:api'], function() {
   Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic')->middleware('delete');
-  Route::post('logout', 'API\PassportController@logout');
+  Route::get('getuser','UserController@getUser');
+  Route::get('logout', 'API\PassportController@logout');
   Route::post('getDetails', 'API\PassportController@getDetails');
 });

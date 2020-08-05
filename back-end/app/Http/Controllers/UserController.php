@@ -12,6 +12,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use App\User;
 use App\Republic;
 use App\Comment;
+use Auth;
 
 class UserController extends Controller {
   public function construct() {
@@ -103,6 +104,12 @@ class UserController extends Controller {
        $user = new User;
        $user->createUser($request);
        return response()->json([$user, 'User criado com sucesso!']);
+     }
+
+     //pega o usuario logado autenticado
+     public function getUser() {
+       $user = Auth::user();
+       return response()->json($user);
      }
 
      //find an especific user by id
