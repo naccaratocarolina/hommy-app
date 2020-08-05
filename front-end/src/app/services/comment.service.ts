@@ -20,29 +20,29 @@ export class CommentService {
   constructor( public http: HttpClient ) { }
 
   //lista todos os comentarios
-  getListComment(): Observable<any> {
+  public getListComment(): Observable<any> {
     return this.http.get(this.apiUrl + 'listComment');
   }
 
   //lista os comentarios da republica dada
-  getCommentByRepublic(republic_id): Observable<any> {
+  public getCommentByRepublic(republic_id): Observable<any> {
     return this.http.get(this.apiUrl + 'listComments/' + republic_id);
   }
 
   //adiciona um comentario
-  postAddComment(form): Observable<any>{
+  public postAddComment(form): Observable<any>{
     this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
     return this.http.post(this.apiUrl + 'post', form, this.httpHeaders);
   }
 
   //edita um comentario ja existente
-  putUpdateComment(id, form): Observable<any> {
+  public putUpdateComment(id, form): Observable<any> {
     this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
     return this.http.put(this.apiUrl + 'updateComment/' + id, form, this.httpHeaders);
   }
 
   //deleta um comentario ja existente
-  delDeleteComment(id:number): Observable<any> {
+  public delDeleteComment(id:number): Observable<any> {
     this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
     return this.http.delete(this.apiUrl + 'deleteComment/' + id, this.httpHeaders);
   }

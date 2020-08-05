@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -14,12 +13,12 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Home',
-      url: '/home',
+      url: '/home2',
       icon: 'home'
     },
     {
       title: 'Minha conta',
-      url: '/home',
+      url: '/home2',
       icon: 'person'
     },
     {
@@ -29,17 +28,17 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Pesquisar',
-      url: '/home',
+      url: '/home2',
       icon: 'search'
     },
     {
       title: 'Deletar conta',
-      url: '/home',
+      url: '/home2',
       icon: 'trash'
     },
     {
       title: 'Sair',
-      url: '/home',
+      url: '/home2',
       icon: 'exit'
     }
   ];

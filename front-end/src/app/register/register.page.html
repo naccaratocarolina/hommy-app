@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <form (ngSubmit)="register(register_form)" [formGroup]="register_form">
+    <ion-textarea formControlName="name" type="text" placeholder="Nome"></ion-textarea>
+    <ion-textarea formControlName="email" type="text" placeholder="E-mail"></ion-textarea>
+    <ion-textarea formControlName="password" type="text" placeholder="Senha"></ion-textarea>
+    <ion-button [disabled]="!register_form.valid" type='submit'>Registrar</ion-button>
+  </form>
 </ion-content>

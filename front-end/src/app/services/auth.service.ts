@@ -20,17 +20,17 @@ export class AuthService {
   constructor( public http: HttpClient ) { }
 
   //registra um novo user
-  postRegister(form): Observable<any> {
+  public postRegister(form): Observable<any> {
     return this.http.post(this.apiUrl + 'register', form, this.httpHeaders);
   }
 
   //loga um user ja existente
-  postLogin(form): Observable<any> {
+  public postLogin(form): Observable<any> {
     return this.http.post(this.apiUrl + 'login', form, this.httpHeaders);
   }
 
-  postLogout(): Observable<any> {
+  public postLogout(): Observable<any> {
     this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
-    return this.http.get(this.apiUrl + 'logout', this.httpHeaders);
+    return this.http.post(this.apiUrl + 'logout', this.httpHeaders);
   }
 }
