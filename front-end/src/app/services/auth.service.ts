@@ -36,9 +36,8 @@ export class AuthService {
   }
 
   //desloga um user autenticado
-  public postLogout(): Observable<any> {
+  public getLogout(): Observable<any> {
     this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
-    console.log(this.httpHeaders);
     return this.http.get(this.apiUrl + 'logout', this.httpHeaders);
   }
 }

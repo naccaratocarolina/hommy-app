@@ -9,12 +9,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  constructor( public authService: AuthService, private router: Router) { }
+  constructor( public authService: AuthService, private router: Router ) { }
 
   ngOnInit() { }
 
   logout() {
-    this.authService.postLogout().subscribe((res) => {
+    this.authService.getLogout().subscribe((res) => {
       console.log(res);
       localStorage.removeItem('token');
       this.router.navigate(['/home2']);
